@@ -12,7 +12,7 @@ setInterval(function(){
         index = 0;
     }
     index++;
-}, 5000);
+}, 3000);
 
 const stop = () => {
     clearInterval(intervalo);
@@ -21,3 +21,10 @@ sliderInners.addEventListener('mouseover', () => {
     stop();
 });
 
+//manu ouline
+const imageButton = document.getElementById("imageButton");
+const sidebar = document.getElementById("sidebar");
+
+imageButton.addEventListener("click", function() {
+  sidebar.style.display = (sidebar.style.display === "none") ? "block" : "none";
+});
