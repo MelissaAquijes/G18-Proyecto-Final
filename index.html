@@ -24,6 +24,7 @@
         id="imageButton" 
         src="./assets/icons/menu-outline.svg" 
         alt="" 
+        onclick="Open()" 
         >
         <div class="flex flex-row pl-10">
           <div class="flex h-5 max-lg:hidden">
@@ -38,7 +39,7 @@
         <div>
           <img class="md:w-50" src="./assets/images/logo.png" alt="" />
         </div>
-        <div class="flex h-9 text-center px-10 cursor-pointer">
+        <div class="flex h-7 text-center px-10 cursor-pointer">
           <img class="" src="./assets/icons/search-outline.svg" alt="">
           <img src="./assets/icons/person-outline.svg" alt="">
           <img src="./assets/icons/bag-outline.svg" alt="" />
@@ -58,7 +59,6 @@
               </ul>
             </div >
           </div>
-        
         <section class="">
           <div class="slider ">
           <div class="sliderInner flex flex-row flex-nowrap xl-auto">
@@ -68,15 +68,16 @@
             <img  src="./assets/images/image4.png" alt="" />
           </div>
           </div>
-    
         </div>
         </section>
 
-        <section class=" bg-[gray] absolute top-0 h-[100%] opacity-95 left-[-300px]">
-          <div id="sidebar" class="lg:hidden  w-[250px] p-2 cursor-pointer text-gray-100 text-xl ml-3" >
+        <section class=" bg-[gray] absolute top-0 h-[100%] opacity-95 lg:hidden">
+          <div
+        class="sidebar fixed top-0 bottom-0 lg:left-0 left-[-300px] p-2 w-[300px] overflow-y-auto text-center bg-gray-900"
+      >
             <div class=" flex justify-between ">
               <h1 class="font-bold text-gray-200 text-[15px] ml-3">Wawita</h1>
-              <img class="h-5" src="./assets/icons/close-outline.svg" alt="">
+              <img class="h-5" onclick="Open()"  src="./assets/icons/close-outline.svg" alt="">
             </div>
             <div>
               <div class="p-3 mt-3 flex items-center rounded-md px-2 cursor-pointer bg-gray-700 text-white">
@@ -88,22 +89,22 @@
                 />
               </div>
             </div>
-            <hr class="my-2 text-gray-600" />
-            <div class="flex flex-col ml-0">
-              <button class="py-7">Bebe</button>
-              <button class="py-5">Beba</button>
-              <button class="py-5">Niña</button>
-              <button class="py-5">Niño</button>
+            <hr class="my-2" />
+            <div class="flex flex-col ml-0  text-gray-200  ">
+              <div class="p-2"><button class="w-full py-2 hover:bg-gray-600 rounded-lg duration-300">Bebe</button></div>
+              <div class="p-2"><button class="w-full py-2 hover:bg-gray-600 rounded-lg duration-300">Beba</button></div>
+              <div class="p-2"><button class="w-full py-2 hover:bg-gray-600 rounded-lg duration-300">Niña</button></div>
+              <div class="p-2"><button class="w-full py-2 hover:bg-gray-600 rounded-lg duration-300">Niño</button></div>
             </div>
-            <hr class="my-2 text-gray-600" />
-            <div class="flex flex-col ml-0">
-              <button class="py-5">Mayoral</button>
-              <button class="py-5">Accesorio </button>
-            </div> 
-            <hr class="my-2 text-gray-600" />
-            <div class="flex items-center">
+            <hr class="my-2 " />
+            <div class="flex flex-col ml-0  text-gray-200  ">
+              <div class="p-2"><button class="w-full py-2 hover:bg-gray-600 rounded-lg duration-300">Mayoral</button></div>
+              <div class="p-2"><button class="w-full py-2 hover:bg-gray-600 rounded-lg duration-300">Accesorios</button></div>
+            </div>
+            <hr class="my-2 p-4" />
+            <div class="flex justify-center align-row text-gray-200 hover:bg-gray-600 rounded-lg duration-300 p-3">
               <img class="h-5" src="./assets/icons/log-out-outline.svg" alt="">
-              <button class="py-5 px-4">LogOut</button>
+              <button class="  px-6">LogOut</button>
             </div>
           </div>
         </section>

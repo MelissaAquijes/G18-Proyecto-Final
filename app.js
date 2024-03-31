@@ -22,9 +22,7 @@ sliderInners.addEventListener('mouseover', () => {
 });
 
 //manu ouline
-const imageButton = document.getElementById("imageButton");
-const sidebar = document.getElementById("sidebar");
 
-imageButton.addEventListener("click", function() {
-  sidebar.style.display = (sidebar.style.display === "none") ? "block" : "none";
-});
+function Open(){
+    document.querySelector('.sidebar').classList.toggle('left-[-300px]');
+  }
