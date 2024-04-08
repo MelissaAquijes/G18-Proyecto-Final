@@ -1,11 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
+  <script src="https://cdn.tailwindcss.com/3.4.1"></script>
 </head>
+
 <body>
-  
+  <header class="w-full">
+    <p class="bg-[#F684A3] text-xs text-center">
+      Los envíos de pedidos para Lima son de 1 a 3 días hábiles, para
+      Provincia de 3 a 7 días hábiles.
+    </p>
+
+    <div class="w-full flex justify-between items-center px-4 py-4 border-b border-[#e6e5e5]">
+      <img class="w-6" src="./assets/hamburger.svg" alt="" />
+
+      <a class="" href="">
+        <img class="w-[120px]" src="./assets/logo.png" alt="" />
+      </a>
+
+      <div class="flex justify-end items-center">
+        <a href="">
+          <img class="w-6 mr-4" src="./assets/search.svg" alt="" />
+        </a>
+
+        <a href="">
+          <img class="hidden md:block w-6 mr-4" src="./assets/user.svg" alt="">
+        </a>
+        
+        <a class="relative" href="">
+          <img class="w-6 relative" src="./assets/bag.svg" alt="" />
+          <span class="absolute bottom-0 left-2">2</span>
+        </a>
+
+
+      </div>
+    </div>
+  </header>
+
+  <footer class="bg-[#FC819E] text-center lg:text-left">
+    <div
+      class="flex items-center justify-center border-b-2 p-6 lg:justify-between">
+      <div class="hidden lg:block">
+        <span>Conéctate con nosotros en las redes sociales:</span>
+      </div>
+
+      <div class="flex justify-end gap-8">
+        <a href="#!">
+          <img class="w-7" src="./assets/image.svg" alt="">
+        </a>
+        <a href="#!">
+          <img class="w-7" src="./assets/image.svg" alt="">
+        </a>
+
+        <a href="#!">
+          <img class="w-7" src="./assets/image.svg" alt="">
+        </a>
+        <a href="#!"">
+          <img class="w-7" src="./assets/image.svg" alt="">
+        </a>
+      </div>
+    </div>
+
+    <div class="mx-6 py-10 text-center md:text-left">
+      <div class="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+
+        <div class="">
+          <h6 class="mb-4 flex items-center justify-center font-semibold uppercase md:justify-start">
+            <img class="w-4 mr-2" src="./assets/image.svg" alt="">
+            WAWITAS
+          </h6>
+          <p class="md:pr-7">
+            Wawitas es la tienda especializada en artículos para bebés más
+            linda de Lima, llena de productos de la mejor calidad de las
+            marcas más reconocidas en un ambiente cálido y acogedor.
+          </p>
+        </div>
+
+        <hr class="h-px bg-white border-0 md:hidden" />
+
+        <div>
+          <h6 class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+            Contact
+          </h6>
+          <p class="mb-4 flex items-center justify-center md:justify-start">
+            <img class="w-4 mr-2" src="./assets/image.svg" alt="">
+            </span>
+            C C. Open Plaza
+          </p>
+          <p class="mb-4 flex items-center justify-center md:justify-start">
+            <img class="w-4 mr-2" src="./assets/image.svg" alt="">
+            hola@wawitas.com
+          </p>
+          <p class="mb-4 flex items-center justify-center md:justify-start">
+            <img class="w-4 mr-2 me-3" src="./assets/image.svg" alt="">
+            + 01 234 567 88
+          </p>
+        </div>
+
+        <hr class="h-px bg-white border-0 md:hidden" />
+
+        <div>
+          <h6 class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+            WAWITAS
+          </h6>
+          <p class="mb-4">
+            <a href="#!">Nosotros</a>
+          </p>
+          <p class="mb-4">
+            <a href="#!">Tiendas</a>
+          </p>
+          <p class="mb-4">
+            <a href="#!">Contáctanos</a>
+          </p>
+        </div>
+
+        <hr class="h-px bg-white border-0 md:hidden" />
+
+        <div>
+          <h6 class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+            ATENCIÓN AL USUARIO
+          </h6>
+          <p class="mb-4">
+            <a href="#!">Terminos de condiciones</a>
+          </p>
+          <p class="mb-4">
+            <a href="#!">Cambios y devoluciones</a>
+          </p>
+          <p class="mb-4">
+            <a href="#!">Política de privacidad</a>
+          </p>
+          <p>
+            <a href="#!">Política de envío</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-[#e6e5e5] p-6 text-center">
+      <span>© 2024 Copyright:</span>
+      <a class="font-semibold" href="https://tw-elements.com/">WAWITAS</a>
+    </div>
+  </footer>
 </body>
+
 </html>
