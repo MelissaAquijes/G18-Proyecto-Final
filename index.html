@@ -13,7 +13,7 @@
   <script defer src="./app.js"></script>
 
 </head>
-  <body class=" ">
+  <body class="">
     <p class="bg-[orange] text-center w-full">
       Los envíos de pedidos para Lima son de 1 a 3 días hábiles, para Provincia de 3 a 7 días hábiles.
     </p>
@@ -26,7 +26,7 @@
         alt="" 
         onclick="Open()" 
         >
-        <div class="flex flex-row pl-10">
+        <div class="flex flex-row pl-10 gap-5">
           <div class="flex h-5 max-lg:hidden">
           <img class="px-2" src="./assets/icons/location-outline.svg" alt="" />
           <a class="hover:text-gray-300" href="">tienda</a>
@@ -39,7 +39,7 @@
         <div>
           <img class="md:w-50" src="./assets/images/logo.png" alt="" />
         </div>
-        <div class="flex h-7 text-center px-10 cursor-pointer">
+        <div class="flex gap-5 h-7 text-center px-10 cursor-pointer">
           <img class="" src="./assets/icons/search-outline.svg" alt="">
           <img src="./assets/icons/person-outline.svg" alt="">
           <img src="./assets/icons/bag-outline.svg" alt="" />
@@ -71,13 +71,13 @@
         </div>
         </section>
 
-        <section class=" bg-[gray] absolute top-0 h-[100%] opacity-95 lg:hidden">
+        <section class=" bg-[gray] absolute top-0 h-[100%] opacity-80 lg:hidden">
           <div
         class="sidebar fixed top-0 bottom-0 lg:left-0 left-[-300px] p-2 w-[300px] overflow-y-auto text-center bg-gray-900"
       >
             <div class=" flex justify-between ">
-              <h1 class="font-bold text-gray-200 text-[15px] ml-3">Wawita</h1>
-              <img class="h-5" onclick="Open()"  src="./assets/icons/close-outline.svg" alt="">
+              <h1 class="font-bold text-gray-200 text-[30px] ml-3">Wawita</h1>
+            <img class="h-5 fill-white " onclick="Open()"  src="./assets/icons/close-outline.svg" alt="">
             </div>
             <div>
               <div class="p-3 mt-3 flex items-center rounded-md px-2 cursor-pointer bg-gray-700 text-white">
@@ -207,5 +207,111 @@
       </div>
     </main>
  
+
+
+    <footer class="bg-pink-100 text-center lg:text-left">
+      <div
+        class="flex items-center justify-center border-b-2 p-6 lg:justify-between">
+        <div class="hidden lg:block">
+          <span>Conéctate con nosotros en las redes sociales:</span>
+        </div>
+  
+        <div class="flex justify-end gap-8">
+          <a href="#!">
+            <img class="w-7" src="./assets/image.svg" alt="">
+          </a>
+          <a href="#!">
+            <img class="w-7" src="./assets/image.svg" alt="">
+          </a>
+  
+          <a href="#!">
+            <img class="w-7" src="./assets/image.svg" alt="">
+          </a>
+          <a href="#!">
+            <img class="w-7" src="./assets/image.svg" alt="">
+          </a>
+        </div>
+      </div>
+  
+      <div class="mx-6 py-10 text-center md:text-left">
+        <div class="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+  
+          <div class="">
+            <h6 class="mb-4 flex items-center justify-center font-semibold uppercase md:justify-start">
+              <img class="w-4 mr-2" src="./assets/image.svg" alt="">
+              WAWITAS
+            </h6>
+            <p class="md:pr-7">
+              Wawitas es la tienda especializada en artículos para bebés más
+              linda de Lima, llena de productos de la mejor calidad de las
+              marcas más reconocidas en un ambiente cálido y acogedor.
+            </p>
+          </div>
+  
+          <hr class="h-px bg-white border-0 md:hidden" />
+  
+          <div>
+            <h6 class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+              Contact
+            </h6>
+            <p class="mb-4 flex items-center justify-center md:justify-start">
+              <img class="w-4 mr-2" src="./assets/image.svg" alt="">
+              </span>
+              C C. Open Plaza, Surquillo
+            </p>
+            <p class="mb-4 flex items-center justify-center md:justify-start">
+              <img class="w-4 mr-2" src="./assets/image.svg" alt="">
+              hola@wawitas.com
+            </p>
+            <p class="mb-4 flex items-center justify-center md:justify-start">
+              <img class="w-4 mr-2 me-3" src="./assets/image.svg" alt="">
+              + 01 234 567 88
+            </p>
+          </div>
+  
+          <hr class="h-px bg-white border-0 md:hidden" />
+  
+          <div>
+            <h6 class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+              WAWITAS
+            </h6>
+            <p class="mb-4">
+              <a href="#!">Nosotros</a>
+            </p>
+            <p class="mb-4">
+              <a href="#!">Tiendas</a>
+            </p>
+            <p class="mb-4">
+              <a href="#!">Contáctanos</a>
+            </p>
+          </div>
+  
+          <hr class="h-px bg-white border-0 md:hidden" />
+  
+          <div>
+            <h6 class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+              ATENCIÓN AL USUARIO
+            </h6>
+            <p class="mb-4">
+              <a href="#!">Terminos de condiciones</a>
+            </p>
+            <p class="mb-4">
+              <a href="#!">Cambios y devoluciones</a>
+            </p>
+            <p class="mb-4">
+              <a href="#!">Política de privacidad</a>
+            </p>
+            <p>
+              <a href="#!">Política de envío</a>
+            </p>
+          </div>
+        </div>
+      </div>
+  
+      <div class="bg-[#e6e5e5] p-6 text-center">
+        <span>© 2024 Copyright:</span>
+        <a class="font-semibold" href="https://tw-elements.com/">WAWITAS</a>
+      </div>
+    </footer>
   </body>
 </html>
