@@ -1,13 +1,11 @@
-
-import './App.css'
-import { Header } from './components/Header'
-
-function App() {
+import { Advertising } from "./components"
+ 
+export default function App(){
+  //const menuImages = require.context()
   return (
     <>
-      </Header>
-    </>
-  )
-}
+    <Advertising/>
 
-export default App
+    </>
+  );
+}
