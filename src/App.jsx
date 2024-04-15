@@ -1,11 +1,14 @@
 import { Advertising } from "./components"
- 
+//import { MenuBar } from "./components";
 export default function App(){
-  //const menuImages = require.context()
-  return (
+   return (
     <>
     <Advertising/>
-
+    <header>
+      <nav>
+        <MenuBar/>
+      </nav>
+    </header>
     </>
   );
 }
