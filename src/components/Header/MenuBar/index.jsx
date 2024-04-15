@@ -8,7 +8,7 @@ export default function MenuBar(){
           <img 
             className="cursor-pointer lg:hidden h-6 pr-20" 
             id="imageButton" 
-            src={ iconMenu }
+            src="src\assets\icons\menu-outline.svg"
             alt="" 
             onclick="Open()" 
           /> 

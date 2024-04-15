@@ -1,5 +1,5 @@
-import { Advertising } from "./components"
-//import { MenuBar } from "./components";
+import { Advertising, Home, MenuBar, Main, Footer } from "./components"
+
 export default function App(){
    return (
     <>
@@ -8,6 +8,12 @@ export default function App(){
       <nav>
         <MenuBar/>
       </nav>
+      <main>
+        <Main/>
+      </main>
+      <footer>
+        <Footer/>
+      </footer>
     </header>
     </>
   );
