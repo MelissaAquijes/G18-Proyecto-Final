@@ -1,20 +1,21 @@
-import { Advertising, Home, MenuBar, Main, Footer } from "./components"
+import { Advertising, Home, MenuBar, Main } from "./components"
 
 export default function App(){
-   return (
+  //const menuImages = require.context()
+  return (
     <>
     <Advertising/>
     <header>
-      <nav>
-        <MenuBar/>
+      <nav className=" flex justify-between items-center p-5 w-[90%] mx-auto">
+        <Home/>
       </nav>
+      <section>
+        <MenuBar/>
+      </section>
       <main>
         <Main/>
       </main>
-      <footer>
-        <Footer/>
-      </footer>
-    </header>
+     </header>
     </>
   );
 }
