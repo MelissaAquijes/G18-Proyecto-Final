@@ -69,6 +69,13 @@ export default function HeaderBarHome (){
 
 
 
+
+
+
+
+
+
+
 {/* <button className="w-1/3 border-4 flex justify-center items-center">
 <img className="w-1/2 h-1/2" src="src\assets\icons\search-outline.svg" alt=""/>
 </button>
