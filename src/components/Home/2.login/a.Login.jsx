@@ -7,7 +7,9 @@ export default function Login(){
     <div id="modal" class="relative z-50 w-full">
 
       {/* Background oscuro del modal */}
-        <div class="fixed inset-0 bg-black/60"></div>
+        <div class="fixed inset-0 bg-black/70"></div>
+
+      <div class="bg-red-500">Hola</div>
 
       {/* Cuerpo del modal */}
         <ModalLogin/>
