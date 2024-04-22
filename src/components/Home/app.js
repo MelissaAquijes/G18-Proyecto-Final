@@ -1,6 +1,8 @@
 let sliderInners = document.querySelector(".sliderInner");
 let images = sliderInners.querySelectorAll("img");
 let index = 1
+
+
 setInterval(function(){
     let percentage = index * -100;
     sliderInners.style.transform = "translateX("+ percentage +"%)";
@@ -9,15 +11,19 @@ setInterval(function(){
     }
     index++;
 }, 3000);
+
+
 const stop = () => {
     clearInterval(intervalo);
 }
+
+
 sliderInners.addEventListener('mouseover', () => {
     stop();
 });
 
-//manu ouline
 
+//menu ouline
 function Open(){
     document.querySelector('.sidebar').classList.toggle('left-[-300px]');
-  }
+}

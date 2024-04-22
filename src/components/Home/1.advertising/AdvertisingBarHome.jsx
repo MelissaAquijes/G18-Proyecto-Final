@@ -1,4 +1,5 @@
-export default function Advertising (){
+// Orange bar in top webpage
+export default function AdvertisingBarHome (){
   return (
     <> 
       <p className="bg-[orange] text-center w-full">
