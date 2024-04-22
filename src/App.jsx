@@ -27,7 +27,7 @@ export default function App(){
 
 
       {/* Slider -> Images carousel below navigate bar*/}
-      {/* <Slider/> */}
+      <Slider/>
 
 
 
