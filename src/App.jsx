@@ -1,10 +1,10 @@
 
-import AdvertisingBarHome from "./components/Home/1.advertising/AdvertisingBarHome";
-import HeaderBarHome from "./components/Home/2.header/HeaderBarHome";
-import NavigateBarHome from "./components/Home/3.navigate/NavigateBarHome";
-import NavigateBarHome_mobile from "./components/Home/3.navigate/NavigateBarHome_mobile";
-import Slider from "./components/Home/4.slider/Slider";
-import Login from "./components/Home/2.login/a.Login";
+import AdvertisingBarHome from "./components/Home/advertising/AdvertisingBarHome";
+import HeaderBarHome from "./components/Home/header/HeaderBarHome";
+import NavigateBarHome from "./components/Home/navigate/NavigateBarHome";
+import NavigateBarHome_mobile from "./components/Home/navigate/NavigateBarHome_mobile";
+import Slider from "./components/Home/slider/Slider";
+import Login from "./components/Home/login/a.Login";
 
 
 export default function App(){
