@@ -1,15 +1,13 @@
-import ModalLogin from "./b.ModalLogin";
+import ModalLogin from "./ModalLogin";
 
 export default function Login(){
   return(
 
     // {/* MODAL */}
-    <div id="modal" class="relative z-50 w-full">
+    <div id="modal" className="relative z-50 w-full">
 
       {/* Background oscuro del modal */}
-        <div class="fixed inset-0 bg-black/70"></div>
-
-      <div class="bg-red-500">Hola</div>
+        <div className="fixed inset-0 bg-black/70"></div>
 
       {/* Cuerpo del modal */}
         <ModalLogin/>
