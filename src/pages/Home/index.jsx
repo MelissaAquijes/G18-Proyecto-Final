@@ -1,4 +1,4 @@
-import { Advertising, Home, MenuBar, Main } from "../../components";
+import { Advertising, Header, Main, Slider } from "../../components";
 
 export default function homepage(){
   
@@ -6,11 +6,9 @@ export default function homepage(){
     <>
     <Advertising/>
     <header>
-      <nav className=" flex justify-between items-center p-5 w-[90%] mx-auto">
-        <Home/>
-      </nav>
+      <Header/>
       <section>
-        <MenuBar/>
+        <Slider/>
       </section>
       <main>
         <Main/>

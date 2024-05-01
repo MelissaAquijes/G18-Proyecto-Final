@@ -1,3 +1,4 @@
+/*
 let sliderInners = document.querySelector(".sliderInner");
 let images = sliderInners.querySelectorAll("img");
 let index = 1
@@ -15,7 +16,7 @@ const stop = () => {
 sliderInners.addEventListener('mouseover', () => {
     stop();
 });
-
+*/
 //manu ouline
 
 function Open(){

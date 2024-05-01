@@ -8,7 +8,9 @@ export default function Login() {
           </div>
           <form className="my-5">
             <div className="my-5">
-              <input
+              <button></button>
+              <input type="text" className="hidden"/>
+              <input 
                 type="email"
                 placeholder="User Administrator"
                 className="px-3 py-2 rounded-md border outline-none w-full"

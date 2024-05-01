@@ -1,5 +1,4 @@
 export { default as Advertising } from "./Advertising";
-export { default as Home } from "./Header/Home";
-export { default as MenuBar } from "./Header/MenuBar";
+export { default as Header } from "./Header";
 export { default as Main } from "./Main";
-
+export { default as Slider } from "./Slider"
