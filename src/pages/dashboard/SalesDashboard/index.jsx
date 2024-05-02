@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom"
-export default function HomeDashboard() {
+export default function SalesDashboard() {
 
-  
   return (
     <>
     <div className=" grid grid-cols-6 h-[100vh] "> 
@@ -12,15 +11,15 @@ export default function HomeDashboard() {
         </div>
       <hr className="my-2 " />
         <div className="flex flex-col">
-          <div>
-            <button className="w-full py-2 bg-gray-600 rounded-l-lg duration-300">
+          <div className="p-2">
+            <button className="w-full py-2 hover:bg-gray-600 rounded-l-lg duration-300">
               <Link to={"/HomeDashboard"}>
                 Dashboard
               </Link>
             </button>
             </div>
             <div className="p-2">
-              <button className="w-full py-2 hover:bg-gray-600 rounded-lg duration-300"> 
+            <button className="w-full py-2 hover:bg-gray-600 rounded-lg duration-300">
               <Link to={"/ProductsDashboard"}>
                 Products
               </Link>
@@ -43,8 +42,8 @@ export default function HomeDashboard() {
               </Link>
             </button>
           </div>
-          <div className="p-2">
-            <button className="w-full py-2 hover:bg-gray-600 rounded-lg duration-300">
+          <div >
+            <button className="w-full py-2 bg-gray-600 rounded-l-lg duration-300"> 
               <Link to={"/SalesDashboard"}>
               Sales
               </Link>
@@ -58,7 +57,7 @@ export default function HomeDashboard() {
         </div>
       </div>
     
-      <div className="grid col-span-5 bg-green-400 p-4 ">Content Dashboard</div> 
+      <div className="grid col-span-5 bg-green-400 p-4 ">Orders Dashboard</div> 
     </div>
     </>
   )
