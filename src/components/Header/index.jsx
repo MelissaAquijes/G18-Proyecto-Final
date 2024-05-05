@@ -1,13 +1,14 @@
-//import { Header } from "../Header";
+import { useSelector } from "react-redux";
 
 
 export default function Header (){
-
+  const value = useSelector((state) => state.counter.value);
 
   function Open(){
     document.querySelector('.sidebar').classNameList.toggle('left-[-300px]');
   }
 
+  
   return (
     <> 
     <nav className=" flex justify-between items-center p-5 w-[100%] mx-auto">
@@ -15,8 +16,6 @@ export default function Header (){
         className="cursor-pointer lg:hidden h-6 pr-20" 
         id="imageButton" 
         src="src\assets\icons\menu-outline.svg" 
-        alt="" 
-        onclick="Open()" 
         />
 
         <div className="flex flex-row pl-10 gap-5">
@@ -35,12 +34,15 @@ export default function Header (){
         <div className="flex gap-5 h-7 text-center px-10 cursor-pointer">
           <img className="" src="src\assets\icons\search-outline.svg" alt=""/>
           <img src="src\assets\icons\person-outline.svg" alt=""/>
-          <img src="src\assets\icons\bag-outline.svg" alt="" />
+          <div className="flex relative">
+            <img src="src\assets\icons\bag-outline.svg" alt="" /> 
+              <div className="absolute bg-gray-100 rounded-full bottom-2 right-0"> {value} </div>
+          </div>
         </div>
       </nav>
 
       <form action="">
-          <div className="nav-links flex min-h-fit xl-min-fit min-h-[60vh] left-0 max-lg:hidden md:w-auto w-full items-center px-5">
+          <div className="nav-links flex min-h-fit xl-min-fit  left-0 max-lg:hidden md:w-auto w-full items-center px-5">
             <div className=" flex md:flex-row justify-center border md:w-full ">
               <ul className="flex md:flex-row items-center md:gap-[4vw] p-5 ">
               <li><button className="hover:text-gray-300"> Bebe </button></li>
@@ -60,7 +62,7 @@ export default function Header (){
       >
             <div className=" flex justify-between ">
               <h1 className="font-bold text-gray-200 text-[30px] ml-3">Wawita</h1>
-            <img className="h-5 fill-white " onclick="Open()"  src="src\assets\icons\close-outline.svg" alt=""/>
+            <img className="h-5 fill-white "  src="src\assets\icons\close-outline.svg" alt=""/>
             </div>
             <div>
               <div className="p-3 mt-3 flex items-center rounded-md px-2 cursor-pointer bg-gray-700 text-white">

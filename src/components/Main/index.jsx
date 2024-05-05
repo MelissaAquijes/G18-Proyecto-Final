@@ -1,5 +1,15 @@
+import { useSelector, useDispatch  } from "react-redux";
+import { addition } from "../../app/slice/counterSlice";
+import Header from "../Header";
+
 export default function Main(){
     //const menuImages = require.context()
+    const counter = useSelector (function (state){
+      return state.counter.value;
+    });
+
+    const dispatch = useDispatch ();
+
     return (
       <>
      <main className="m-auto">
@@ -12,7 +22,9 @@ export default function Main(){
            <div className="p-6 flex flex-col gap-3">
             <h2 className="">Ropa</h2>
             <p className="font-bold">$80</p>
-            <button className="border-none text-white bg-black p-3 rounded-lg cursor-pointer">  Añadir al carrito</button>
+            <button onClick={() => dispatch(addition())}  className="border-none text-white bg-black p-3 rounded-lg cursor-pointer">  
+             Añadir al carrito   
+            </button>
           </div>
         </div>
         <div className="bg-gray rounded-lg  hover:shadow-lg  ">
@@ -22,7 +34,9 @@ export default function Main(){
            <div className="p-6 flex flex-col gap-3">
             <h2 className="">Ropa</h2>
             <p className="font-bold">$80</p>
-            <button className="border-none text-white bg-black p-3 rounded-lg cursor-pointer">  Añadir al carrito</button>
+            <button onClick={() => dispatch(addition())} className="border-none text-white bg-black p-3 rounded-lg cursor-pointer">  
+              Añadir al carrito
+            </button>
           </div>
         </div>
         <div className="bg-gray rounded-lg  hover:shadow-lg  ">
@@ -32,7 +46,9 @@ export default function Main(){
            <div className="p-6 flex flex-col gap-3">
             <h2 className="">Ropa</h2>
             <p className="font-bold">$80</p>
-            <button className="border-none text-white bg-black p-3 rounded-lg cursor-pointer">  Añadir al carrito</button>
+            <button onClick={() => dispatch(addition())} className="border-none text-white bg-black p-3 rounded-lg cursor-pointer">  
+              Añadir al carrito
+            </button>
           </div>
         </div>
         <div className="bg-gray rounded-lg  hover:shadow-lg  ">
@@ -42,7 +58,9 @@ export default function Main(){
            <div className="p-6 flex flex-col gap-3">
             <h2 className="">Ropa</h2>
             <p className="font-bold">$80</p>
-            <button className="border-none text-white bg-black p-3 rounded-lg cursor-pointer">  Añadir al carrito</button>
+            <button onClick={() => dispatch(addition())} className="border-none text-white bg-black p-3 rounded-lg cursor-pointer">  
+              Añadir al carrito
+            </button>
           </div>
         </div>
         <div className="bg-gray rounded-lg  hover:shadow-lg  ">
@@ -52,7 +70,9 @@ export default function Main(){
            <div className="p-6 flex flex-col gap-3">
             <h2 className="">Ropa</h2>
             <p className="font-bold">$80</p>
-            <button className="border-none text-white bg-black p-3 rounded-lg cursor-pointer">  Añadir al carrito</button>
+            <button onClick={() => dispatch(addition())} className="border-none text-white bg-black p-3 rounded-lg cursor-pointer">  
+              Añadir al carrito
+            </button>
           </div>
         </div>
         <div className="bg-gray rounded-lg  hover:shadow-lg  ">
@@ -62,7 +82,9 @@ export default function Main(){
            <div className="p-6 flex flex-col gap-3">
             <h2 className="">Ropa</h2>
             <p className="font-bold">$80</p>
-            <button className="border-none text-white bg-black p-3 rounded-lg cursor-pointer">  Añadir al carrito</button>
+            <button onClick={() => dispatch(addition())} className="border-none text-white bg-black p-3 rounded-lg cursor-pointer">  
+              Añadir al carrito
+            </button>
           </div>
         </div>
       </div>
