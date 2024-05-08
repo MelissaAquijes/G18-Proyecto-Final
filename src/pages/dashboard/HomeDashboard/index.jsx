@@ -1,4 +1,7 @@
-import { Link } from "react-router-dom"
+import React from "react";
+import { Link } from "react-router-dom";
+import { HomeChartDashboard } from "../../../chartjs";
+
 export default function HomeDashboard() {
 
   
@@ -58,7 +61,15 @@ export default function HomeDashboard() {
         </div>
       </div>
     
-      <div className="grid col-span-5 bg-green-400 p-4 ">Content Dashboard</div> 
+      <div className="grid col-span-5 w-auto bg-green-400 p-4 ">
+        Content Dashboard
+        <div className="h-50px w-auto">
+        <HomeChartDashboard/>
+        </div>
+      
+      
+      </div> 
+      
     </div>
     </>
   )

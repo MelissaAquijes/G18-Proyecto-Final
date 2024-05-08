@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import { ProductsChartDashboard } from "../../../chartjs"
 export default function ProductsDashboard() {
 
     return (
@@ -57,7 +58,9 @@ export default function ProductsDashboard() {
         </div>
       </div>
     
-      <div className="grid col-span-5 bg-green-400 p-4 ">Products Dashboard</div> 
+      <div className="grid col-span-5 bg-green-400 p-4 ">Products Dashboard
+      <ProductsChartDashboard/>      
+      </div> 
     </div>
     </>
     )

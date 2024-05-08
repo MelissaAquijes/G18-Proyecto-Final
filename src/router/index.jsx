@@ -4,14 +4,13 @@ import { HomePage, LoginDashboard, HomeDashboard, ProductsDashboard, ComentsDash
     return (
       <BrowserRouter>
         <Routes>
-        <Route path="/" element={ <HomePage/>} />
-        <Route path="/loginDashboard" element={ <LoginDashboard/>} />
-        <Route path="/homedashboard" element={<HomeDashboard/>} /> 
-        <Route path="/productsDashboard" element={<ProductsDashboard/>}/>
-        <Route path="/comentsDashboard" element={<ComentsDashboard/>}/>
-        <Route path="/OrdersDashboard" element={<OrdersDashboard/>}/>
-        <Route path="/SalesDashboard" element={<SalesDashboard/>}/>
-        
+          <Route path="/" element={ <HomePage/>} />
+          <Route path="/loginDashboard" element={ <LoginDashboard/>} />
+          <Route path="/homedashboard" element={<HomeDashboard/>} /> 
+          <Route path="/productsDashboard" element={<ProductsDashboard/>}/>
+          <Route path="/comentsDashboard" element={<ComentsDashboard/>}/>
+          <Route path="/OrdersDashboard" element={<OrdersDashboard/>}/>
+          <Route path="/SalesDashboard" element={<SalesDashboard/>}/>
         </Routes>
       </BrowserRouter>
     )
