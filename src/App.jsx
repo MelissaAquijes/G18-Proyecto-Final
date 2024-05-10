@@ -4,24 +4,38 @@ import HeaderBarHome from "./components/Home/header/HeaderBarHome";
 import NavigateBarHome from "./components/Home/navigate/NavigateBarHome";
 import NavigateBarHome_mobile from "./components/Home/navigate/NavigateBarHome_mobile";
 import Slider from "./components/Home/slider/Slider";
-import Login from "./components/login/Login";
+import ModalUser from "./components/userCard/ModalUser";
+
+import { useState } from "react";
 
 
 export default function App(){
-  //const menuImages = require.context()
+
+  // // Variable para conocer el estado del Modal (abierto o cerrado)
+  // var [isOpen, setIsOpen] = useState(false);
+
+  // // Función para controlar la apertura-cierre del modal
+  // const handleModalLogin = (state) => {
+  //   state ? setIsOpen(false) : setIsOpen(true);
+  // }
+
+  var [modalStatus, setModalStatus] = useState("close");
+  const openUserModal = () => setModalStatus("open");
+  const closeUserModal = () => setModalStatus("close");
+
   return (
     
     // general container 
     <> 
-      {/* Login Modal */}
-      <Login/>
+      {/* Login Modal */} 
+      <ModalUser modalStatus={modalStatus} closeUserModal={closeUserModal}/>
 
 
       {/*Orange bar - top of webpage*/}
       <AdvertisingBarHome/>
       
       {/* Bar: Location + Wsp + LOGO + search + login + cart */}
-      <HeaderBarHome/>
+      <HeaderBarHome openUserModal={openUserModal}/>
 
       {/* Navigate Bar - Store Categories*/}
       <hr className="my-2 mx-8 border"/> 

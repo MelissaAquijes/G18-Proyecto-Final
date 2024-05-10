@@ -12,7 +12,7 @@ export default function NavigateBarHome_mobile() {
         {/* Title*/}
         <div className="flex justify-between">
           <h1 className="font-bold text-gray-200 text-[30px] ml-3">Wawitas</h1>
-          <img className="h-5 fill-white" onclick="Open()"  src="src\assets\icons\close-outline.svg" alt=""/>
+          <img className="h-5 fill-white" src="src\assets\icons\close-outline.svg" alt=""/>
         </div>
 
         {/* Input: SEARCH */}
