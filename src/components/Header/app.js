@@ -1,4 +1,4 @@
-/*
+
 let sliderInners = document.querySelector(".sliderInner");
 let images = sliderInners.querySelectorAll("img");
 let index = 1
@@ -9,14 +9,14 @@ setInterval(function(){
         index = 0;
     }
     index++;
-}, 3000);
+}, 2000);
 const stop = () => {
     clearInterval(intervalo);
 }
 sliderInners.addEventListener('mouseover', () => {
     stop();
 });
-*/
+
 //manu ouline
 
 function Open(){
