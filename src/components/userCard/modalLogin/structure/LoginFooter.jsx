@@ -1,6 +1,6 @@
 export default function LoginFooter(){
   return(
-    <section id="submitAll" className="bg-blue-400 h-1/5 font-bold">
+    <section id="submitAll" className="bg-amber-400 h-[20%] font-bold">
       <div className="border-4 h-2/5 text-sm flex items-center justify-between px-2">
         <div>
           <input type="checkbox" id="acceptTerms" className="mx-1"/>

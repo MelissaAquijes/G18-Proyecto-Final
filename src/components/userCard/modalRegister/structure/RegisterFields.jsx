@@ -1,6 +1,6 @@
 export default function RegisterFields(){
   return(
-    <section id="fields" className="bg-yellow-700 w-full h-[70%] py-[5%] flex flex-col justify-center gap-5">
+    <section id="fields" className="border-4 border-black w-full h-[70%] py-[5%] flex flex-col justify-center gap-5">
 
       <div id="emailField" className="w-full h-1/5 flex border-4 rounded-xl">  
         <i className="fa-solid fa-at bg-rose-300 w-[10%] h-[100%] flex justify-center items-center rounded-l-[8px] border-r-4"></i>
