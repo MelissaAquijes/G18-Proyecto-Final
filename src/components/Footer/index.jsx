@@ -15,17 +15,17 @@ export default function Footer() {
           <hr className=""></hr>
 
           <div className="flex justify-end gap-8">
-            <a className="w-[45px] h-[45px] border bg-transparent text-blue border-blue rounded-full text-center py-2.5" href="#">
-              <i class="fa-brands fa-twitter"></i>
+            <a className="w-[45px] h-[45px] border bg-transparent text-blue border-blue rounded-full text-center py-2.5 hover:bg-blue hover:text-[#212529]" href="#">
+              <i className="fa-brands fa-twitter"></i>
             </a>
-            <a className="w-[45px] h-[45px] border bg-transparent text-blue border-blue rounded-full text-center py-2.5" href="#">
-              <i class="fa-brands fa-facebook-f"></i>
+            <a className="w-[45px] h-[45px] border bg-transparent text-blue border-blue rounded-full text-center py-2.5 hover:bg-blue hover:text-[#212529]" href="#">
+              <i className="fa-brands fa-facebook-f"></i>
             </a>
-            <a className="w-[45px] h-[45px] border bg-transparent text-blue border-blue rounded-full text-center py-2.5" href="#">
+            <a className="w-[45px] h-[45px] border bg-transparent text-blue border-blue rounded-full text-center py-2.5 hover:bg-blue hover:text-[#212529]" href="#">
               <i class="fa-brands fa-linkedin-in"></i>
             </a>
-            <a className="w-[45px] h-[45px] border bg-transparent text-blue border-blue rounded-full text-center py-2.5" href="#">
-              <i class="fa-brands fa-instagram"></i>
+            <a className="w-[45px] h-[45px] border bg-transparent text-blue border-blue rounded-full text-center py-2.5 hover:bg-blue hover:text-[#212529]" href="#">
+              <i className="fa-brands fa-instagram"></i>
             </a>
           </div>
         </div>
@@ -48,15 +48,15 @@ export default function Footer() {
                 Contact
               </h6>
               <p className="mb-4 flex items-center justify-center md:justify-start text-sm">
-                <i class="text-pink mr-2 fa-solid fa-location-dot"></i>
+                <i className="text-pink mr-2 fa-solid fa-location-dot"></i>
                 C C. Open Plaza
               </p>
               <p className="mb-4 flex items-center justify-center md:justify-start text-sm">
-                <i class=" text-pink mr-2 fa-solid fa-envelope"></i>
+                <i className=" text-pink mr-2 fa-solid fa-envelope"></i>
                 hola@wawitas.com
               </p>
               <p className="mb-4 flex items-center justify-center md:justify-start text-sm">
-                <i class="text-pink mr-2 fa-solid fa-phone"></i>
+                <i className="text-pink mr-2 fa-solid fa-phone"></i>
                 + 01 234 567 89
               </p>
             </div>
