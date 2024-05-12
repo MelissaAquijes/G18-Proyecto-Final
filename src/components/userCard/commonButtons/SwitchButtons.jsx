@@ -1,17 +1,21 @@
-import { useState } from "react";
+import { useSelector } from "react-redux";
 
 export default function SwitchButtons(props){
 
+  const swButtonsColor = useSelector((state)=>state.swButtonsColor.color)
+  const modBordersColor = useSelector((state)=>state.modBordersColor.color)
+
+
   const handleLoginButtonEffects = (modalType) => {
     return (modalType==="login")
-    ? "bg-blue hover:border-sky-600 hover:border-4 hover:duration-150"
-    : "bg-white text-gray-300 hover:border-4 border-sky-600 hover:text-black hover:text-xl hover:duration-150"
+    ? "hover:border-4 hover:duration-150".concat(swButtonsColor,modBordersColor)
+    : "bg-white text-gray-300 hover:border-4 hover:text-black hover:text-xl hover:duration-150".concat(modBordersColor);
   }
 
   const handleRegisterButtonEffects = (modalType) => {
     return (modalType==="register")
-    ? "bg-blue hover:border-4 hover:border-sky-600 hover:duration-150"
-    : "bg-white text-gray-300 hover:border-4 hover:border-sky-600 hover:text-black hover:text-xl hover:duration-150";
+    ? swButtonsColor.concat(" hover:border-4 hover:duration-150 ",modBordersColor)
+    : "bg-white text-gray-300 hover:border-4 hover:text-black hover:text-xl hover:duration-150".concat(modBordersColor);
   }
 
 
@@ -20,7 +24,7 @@ export default function SwitchButtons(props){
         <button className={`w-1/2 h-full flex justify-center items-center rounded-l-xl
                             ${handleLoginButtonEffects(props.modalType)}`}
                 onClick={props.change2Login}>
-          Ingresar
+          Iniciar Sesión
         </button>
 
         <button className={`w-1/2 h-full flex justify-center items-center rounded-r-xl

@@ -20,7 +20,7 @@ export default function RegisterStructure(props){
         <div id="modal-content" className="w-full h-[85%]"
              onSubmit={handleFormSubmit}>
 
-          <form action="" id="form-edit" className="w-full h-full font-bold">
+          <form action="" id="form-edit" className="w-full h-full font-bold flex flex-col justify-between">
             <SwitchButtons 
               modalType={props.modalType}
               change2Login={props.change2Login}

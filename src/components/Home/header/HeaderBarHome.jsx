@@ -16,7 +16,7 @@ export default function HeaderBarHome (props){
         alt=""/>
 
       {/* Location + WSP    max-lg:hidden*/}
-      <div className="w-1/4 flex justify-center bg-blue">
+      <div className="w-1/4 flex justify-center bg-blue-300">
         <div className="w-1/2 border-4 flex justify-center items-center"> 
           <a className="w-3/4 border-4 border-red-500 flex" href="#">
             <img className="w-1/4 bg-lime-600" src="src/assets/icons/location-outline.svg" alt="" />
@@ -40,7 +40,7 @@ export default function HeaderBarHome (props){
 
 
       {/* Search + Login + Cart */}
-      <div className="w-1/4 flex justify-end items-center pr-[1.5%] gap-[6%] bg-blue">
+      <div className="w-1/4 flex justify-end items-center pr-[1.5%] gap-[6%] bg-blue-300">
         
         <div className="h-1/3 border-4 bg-emerald-600">
           <button className="flex w-full h-full">

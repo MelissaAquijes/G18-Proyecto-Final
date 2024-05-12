@@ -1,7 +1,6 @@
 export default function LoginFields(){
   return(
-    <section id="fields" className="w-full h-[60%] flex flex-col justify-center items-center gap-5 
-                                    bg-red-200 rounded-xl">
+    <section id="fields" className="w-full h-[60%] flex flex-col justify-center items-center gap-5 bg-lavender rounded-xl ">
               
       {/* <img className="w-[25%]" src="src/assets/images/Twin-Baby.png" alt=""/> */}
 
