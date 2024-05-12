@@ -1,6 +1,4 @@
-export default function Cards(props) {
-  const { products } = props;
-
+export default function Cards({ products }) {
   return (
     <>
       <section className="m-auto flex justify-center">

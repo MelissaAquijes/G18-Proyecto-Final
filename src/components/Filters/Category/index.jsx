@@ -1,6 +1,4 @@
-export default function Category(props) {
-  const { categories, filterCategory } = props;
-
+export default function Category({ categories, filterCategory }) {
   return (
     <>
       {categories.map((category) => (
