@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import {swButtColSliceReducer,modBorderSliceReducer,footButtSliceReducer} from "./exports";
+import {swButtColSliceReducer,modBorderSliceReducer,
+        footButtSliceReducer} from "./exports";
 
 
 export const globalStore = configureStore({

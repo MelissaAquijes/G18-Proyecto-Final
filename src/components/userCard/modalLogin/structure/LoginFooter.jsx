@@ -17,7 +17,7 @@ export default function LoginFooter(){
           <span>Recordar</span>
         </div>
 
-        <a href="#" className="hover:text-indigo-600 hover:underline mx-1">
+        <a href="http://localhost:5173/forgot_my_password" target="_blank" className="hover:text-indigo-600 hover:underline mx-1">
           Olvidé mi contraseña
         </a>
       </div>

@@ -10,6 +10,18 @@ export default function ModalUser(props){
   const change2Register = () => setModalType("register")
   const change2Login = () => setModalType("login")
 
+  const [values,setValues] = useState({
+    email: "",
+    pswd: "",
+  });
+
+  const handleInputChange = (event) => {
+    const {name,value} = event.target;
+    setValues({
+      ...values,
+      [name]: value,
+    })
+  }
 
   return(
     // {/* MODAL */}
@@ -24,7 +36,9 @@ export default function ModalUser(props){
 
         <LoginStructure modalType={modalType}
                         change2Login={change2Login}
-                        change2Register={change2Register}/>
+                        change2Register={change2Register}
+                        values={values}
+                        handleInputChange={handleInputChange}/>
 
         <RegisterStructure modalType={modalType}
                            change2Login={change2Login}

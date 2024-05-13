@@ -14,7 +14,7 @@ export default function RegisterFooter(){
       <div className="h-2/5 text-sm">
         <input type="checkbox" id="acceptTerms" className="mx-1"/>
         <span>Acepto las </span>
-        <a href="#" className="underline hover:text-violet-600">
+        <a href="http://localhost:5173/terms_and_conditions" target="_blank" className="underline hover:text-indigo-600">
           Condiciones de servicio y Política de privacidad
         </a>
       </div>

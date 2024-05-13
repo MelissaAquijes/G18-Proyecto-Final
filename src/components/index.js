@@ -1,4 +1,4 @@
-
+// Exporta todas las páginas que vayamos a crear, pero de la carpeta COMPONENTs
 // Estructura del Login Modal
 export {default as CloseButton} from "./userCard/commonButtons/CloseButton"
 export {default as LoginHeader} from "./userCard/modalLogin/structure/LoginHeader";
