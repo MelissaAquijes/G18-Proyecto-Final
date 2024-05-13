@@ -4,11 +4,10 @@ export default function homepage(){
   
   return (
     <>
-    <Advertising/>
     <header>
       <Header/>
       <section>
-        <Slider/>
+      <Slider/>
       </section>
       <main>
         <Main/>

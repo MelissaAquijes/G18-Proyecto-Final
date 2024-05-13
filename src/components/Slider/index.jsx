@@ -1,40 +1,25 @@
-export default function Slider (){
-/*
-  let sliderInners = document.querySelector(".sliderInner");
-  let images = sliderInners.querySelectorAll("img");
-  let index = 1
-  setInterval(function(){
-      let percentage = index * -100;
-      sliderInners.style.transform = "translateX("+ percentage +"%)";
-      if(index > images.length - 1){
-          index = 0;
-      }
-      index++;
-  }, 5000);
-*/
+import React from "react"
+import Carousel  from "./Carousel"
 
-/*
-  const stop = () => {
-    clearInterval(intervalo);
+  const slides=[
+    "./image1.png",
+    "./image2.png",
+    "./image3.png",
+    "./image4.png",
+
+  ]   
+  export default function Slider (){
+    return (
+    <div className="flex h-100% justify-center items-center h-[100%] ">
+      <div className="max-w-screen-2xl  ">
+
+      <Carousel autoSlide={true} >
+          {slides.map((slide) => (
+            <img src={slide} />
+          ))}
+        </Carousel>
+      
+      </div>
+    </div>
+    )
   }
-    sliderInners.addEventListener('mouseover', () => {
-    stop();
-  });
-*/
-
-  return (
-    <>
-      <section className="">
-        <div className="slider ">
-          <div className="sliderInner flex flex-row flex-nowrap xl-auto">
-            <img src="src\assets\images\image1.png" alt="" />
-            <img src="src\assets\images\image2.png" alt="" />
-            <img src="src\assets\images\image3.png" alt="" />
-            <img src="src\assets\images\image4.png" alt="" />
-          </div>
-        </div>
-      </section>
-    </>   
-  )
- 
- }
