@@ -50,7 +50,7 @@ export default function Header (){
 
         <section className=" bg-[gray] absolute top-0 h-[100%] opacity-80 lg:hidden">
           <div
-        className="sidebar fixed top-0 bottom-0 lg:left-0  left-[-300px] p-2 w-[300px] overflow-y-auto text-center bg-gray-900"
+        className="sidebar fixed top-0 bottom-0 lg:left-0   p-2 w-[300px] overflow-y-auto text-center bg-gray-900"
       >
             <div className=" flex justify-between ">
               <h1 className="font-bold text-gray-200 text-[30px] ml-3">Wawita</h1>
