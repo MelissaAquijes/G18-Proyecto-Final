@@ -1,4 +1,3 @@
-// SortBy.jsx
 import React from "react";
 
 export default function SortBy({ products, handleSortingChange }) {
@@ -19,7 +18,8 @@ export default function SortBy({ products, handleSortingChange }) {
       sorted = products;
     }
 
-    handleSortingChange(sorted); // Llama a la función del padre para actualizar el estado de los productos ordenados
+    // Llama a la función del padre para actualizar el estado de los productos ordenados
+    handleSortingChange(sorted);
   };
 
   return (

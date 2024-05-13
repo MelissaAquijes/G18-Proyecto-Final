@@ -1,11 +1,10 @@
-// Filters.jsx
 import { useState, useEffect } from 'react';
 import useGetProduct from "../../hooks/useGetProduct";
 import Category from "./Category";
 import SortBy from "./SortBy";
 import Cards from "../Cards";
 
-export default function Filters() {
+export default function Filters(props) {
   const { products } = useGetProduct();
   const [category, setCategory] = useState('All');
   const [filteredProducts, setFilteredProducts] = useState(products); // Estado para los productos filtrados
@@ -35,20 +34,29 @@ export default function Filters() {
 
   return (
     <>
-      <div className="p-6 md:flex justify-evenly items-center">
+      <div className="p-6 md:flex justify-between items-center">
         <div>
           <h3 className="text-md text-pink mb-2">Categorías:</h3>
           <div className="flex jus gap-2 lg:gap-5">
-            <Category categories={allCategories} filterCategory={filterCategory} />
+            <Category
+              categories={allCategories}
+              filterCategory={filterCategory}
+            />
           </div>
         </div>
 
         <div className="mt-8 flex justify-center">
-          <SortBy products={filteredProducts} handleSortingChange={handleSortingChange} />
+          <SortBy
+            products={filteredProducts}
+            handleSortingChange={handleSortingChange}
+          />
         </div>
       </div>
 
-      <Cards products={sortedProducts} />
+      <Cards
+        products={sortedProducts}
+        onAddProduct={props.onAddProduct}
+      />
     </>
   );
 }
