@@ -14,7 +14,9 @@ export default function Main(){
     return (
       <>
      <main className="m-auto">
-     <h2 className="text-center text-[40px] p-6">Zona sale</h2>
+      <div className="flex justify-center mt-10">
+        <h2 className="w-40 text-white font-bold  px-10 py-4 rounded-md bg-teal-400 hover:bg-sky-600 flex justify-center">Zona sale</h2>
+      </div>
       <div className=" grid grid-cols-3 max-md:grid-cols-2 xl:grid-cols-4 gap-5 p-10 ">
         <div className="bg-gray rounded-lg  hover:shadow-lg  ">
           <div className="overflow-hidden">
@@ -88,6 +90,11 @@ export default function Main(){
             </button>
           </div>
         </div>
+      </div>
+      <div className="flex justify-center  ">
+        <button className=" w-40 text-white font-bold  px-3 py-2 rounded-md bg-teal-400 hover:bg-sky-600">
+            Ver Mas
+        </button>
       </div>
      </main>
       </>

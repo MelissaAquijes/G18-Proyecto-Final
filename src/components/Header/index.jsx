@@ -1,40 +1,34 @@
 import { useSelector } from "react-redux";
-import { useState } from "react"; 
-//import NavBar from "./NavBar"
-//se agrega
-//import { SideBar } from "./SideBar"
 
 export default function Header (){
   const value = useSelector((state) => state.counter.value);
 
   function Open(){
-    document.querySelector('.sidebar').classList.toggle('left-[-300px]');
+    document.querySelector(".sidebar").classList.toggle("left-[-300px]");
   }
 
   return (
     <> 
-    <header className="bg-white w-full">
+    <header className="bg-white w-full sticky top-0  ">
       <p className="bg-blue text-white p-2 text-center text-sm">
         Envíos gratis a Lima y Provincia por compras superiores a S/120.
       </p>
 
-      <div className="w-full p-3 flex justify-between items-center ">
-       <a className="md:hidden" href="">
-        <i className="text-pink fa-solid fa-bars fa-2xl cursor-pointer "></i>
-      </a>
-        <a href="#" className="flex items-center">
-          <img className="w-[120px]" src= "src\assets\images\logo.png" />
+      <div className="w-full p-3 flex justify-between">
+       <img onClick={Open} className=" cursor-pointer md:hidden h-7  " src= "src\assets\icons\menu-outline.svg"  />
+        <a href="#" className="flex justify-center">
+          <img className="w-[120px] " src= "src\assets\images\logo.png"  />
         </a>
 
         <div>
-          <i className="text-blue fa-solid fa-magnifying-glass"></i>
-          <i className="text-blue ml-4 fa-regular fa-user fa-lg"></i>
-          <i className="text-blue ml-4 fa-solid fa-cart-shopping fa-lg">{value}</i>
+          <i className="text-blue fa-solid fa-magnifying-glass cursor-pointer "></i>
+          <i className="text-blue ml-4 fa-regular fa-user fa-lg cursor-pointer"></i>
+          <i className="text-blue ml-4 fa-solid fa-cart-shopping fa-lg cursor-pointer">{value}</i>
         </div>
       </div>
     </header> 
     <form action="">
-          <div className="nav-links flex min-h-fit xl-min-fit left-0 max-md:hidden md:w-auto w-full items-center px-5">
+          <div className="flex min-h-fit xl-min-fit left-0 max-md:hidden md:w-auto w-full items-center px-5">
             <div className=" flex md:flex-row justify-center border md:w-full ">
               <ul className="flex md:flex-row items-center md:gap-[4vw] p-5 ">
               <li><button className="hover:text-gray-300"> Bebe </button></li>
@@ -50,11 +44,11 @@ export default function Header (){
 
         <section className=" bg-[gray] absolute top-0 h-[100%] opacity-80 lg:hidden">
           <div
-        className="sidebar fixed top-0 bottom-0 lg:left-0   p-2 w-[300px] overflow-y-auto text-center bg-gray-900"
+        className="sidebar fixed top-0 bottom-0 lg:left-0  left-[-300px]  p-2 w-[300px] overflow-y-auto text-center bg-gray-900"
       >
             <div className=" flex justify-between ">
               <h1 className="font-bold text-gray-200 text-[30px] ml-3">Wawita</h1>
-            <img className="h-5 fill-white "  src="src\assets\icons\close-outline.svg" alt=""/>
+              <p className="text-zinc-50 cursor-pointer" onClick={Open}>X</p>
             </div>
             <div>
               <div className="p-3 mt-3 flex items-center rounded-md px-2 cursor-pointer bg-gray-700 text-white">
@@ -86,7 +80,6 @@ export default function Header (){
           </div>
         </section>
       </form>
-
     </>
   );
 }
