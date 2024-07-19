@@ -9,6 +9,7 @@ export default function LoginStructure(props){
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     await createUser(props.values.email, props.values.pswd);
+    
   }
 
   return(

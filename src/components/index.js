@@ -14,4 +14,3 @@ export {default as RegisterHeader} from "./userCard/modalRegister/structure/Regi
 export {default as RegisterFields} from "./userCard/modalRegister/structure/RegisterFields";
 export {default as RegisterFooter} from "./userCard/modalRegister/structure/RegisterFooter";
 export {default as RegisterStructure} from "./userCard/modalRegister/structure/RegisterStructure"
-

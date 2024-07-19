@@ -22,7 +22,7 @@ export default function Footer() {
               <i className="fa-brands fa-facebook-f"></i>
             </a>
             <a className="w-[45px] h-[45px] border bg-transparent text-blue border-blue rounded-full text-center py-2.5 hover:bg-blue hover:text-[#212529]" href="#">
-              <i class="fa-brands fa-linkedin-in"></i>
+              <i className="fa-brands fa-linkedin-in"></i>
             </a>
             <a className="w-[45px] h-[45px] border bg-transparent text-blue border-blue rounded-full text-center py-2.5 hover:bg-blue hover:text-[#212529]" href="#">
               <i className="fa-brands fa-instagram"></i>

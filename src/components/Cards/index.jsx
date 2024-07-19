@@ -17,7 +17,7 @@ export default function Cards(props) {
                 <h2 className="text-xs text-center md:text-[16px]">{product.title}</h2>
                 <p className="font-bold md:text-xl">S/.{product.price}</p>
                 <button
-                  className="bg-black text-white font-bold transition-all text-xs py-3 px-6 rounded-lg shadow-gray-900/10 hover:shadow-gray-900/20 hover:bg-pink w-full hover:scale-105 focus:scale-105  md: mx-4"
+                  className="bg-black text-white font-bold transition-all text-xs py-3 px-6 rounded-lg shadow-gray-900/10 hover:shadow-gray-900/20 hover:bg-pink w-full hover:scale-105 focus:scale-105 active:scale-110 md: mx-4"
                   onClick={()=>props.onAddProduct(product)}
                 >
                   Añadir al carrito

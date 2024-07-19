@@ -5,4 +5,9 @@ Descarga FrontEnd - Versión PM (Vercel)
 
 (19-07-24 11:41 am)
 =====================================================
+Updating file "notes.md"
+
+
+(19-07-24 12:00 pm)
+=====================================================
 Updating to final version (PM+login)

@@ -1,12 +1,8 @@
 import { useState, useEffect } from "react";
 import logo from "../../assets/logo.png";
 
-export default function Header({
-  count,
-  setCountUser,
-  productsCart,
-  setProductsCart,
-}) {
+export default function Header({ count, setCountUser, productsCart, setProductsCart, openUserModal }){
+
   const [active, setActive] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -17,12 +13,13 @@ export default function Header({
   };
 
   const calculateTotalPrice = () => {
-    const total = productsCart.reduce(
-      (accumulator, product) => accumulator + product.price,
-      0
-    );
+    const total = productsCart.reduce((accumulator, product) => accumulator + product.price, 0);
     setTotalPrice(total);
   };
+
+  const closeCart = () => {
+
+  }
 
   useEffect(() => {
     //usamos UseEffect para que automaticamente corra la funcion cuando algo se modifica en [productCart]
@@ -31,7 +28,7 @@ export default function Header({
 
   return (
     <>
-      <header className="bg-white w-full relative">
+      <header className="bg-white w-full">
         <p className="bg-blue text-white p-2 text-center text-sm">
           Envíos gratis a Lima y Provincia por compras superiores a S/120.
         </p>
@@ -39,37 +36,41 @@ export default function Header({
         <div className="w-full p-3 flex justify-between items-center">
           <i className="text-pink fa-solid fa-bars fa-2xl cursor-pointer"></i>
 
+          {/* Logo de la página */}
           <a href="#">
-            <img className="w-[120px]" src={logo} />
+            <img className="w-[120px] " src={logo} />
           </a>
 
-          <div className="relative">
-            <i className="text-blue fa-regular fa-user fa-lg cursor-pointer"></i>
-            <i
-              className="text-blue relative ml-4 fa-solid fa-cart-shopping fa-lg cursor-pointer"
-              onClick={() => setActive(!active)}
-            >
-              <span className="bg-pink rounded-full w-4 text-center text-xs text-white absolute bottom-1 left-3">
-                {count}
-              </span>
-            </i>
+          <div className="relative flex w-[100px] h-[40px]">
+            {/* user icon*/}
+            <div className="w-1/2 flex justify-center items-center">
+              <button onClick={openUserModal}>
+                <i className="text-blue fa-regular fa-user fa-lg"></i>
+              </button>
+            </div>
 
-            <div
-              className={`${
-                active
-                  ? "hidden"
-                  : "bg-white w-[550px]  right-0 vh-full absolute"
-              }`}
-            >
-              <div className="flex justify-between p-4">
-                <h3 className="font-bold">Mis compras</h3>
-                <i
-                  class="fa-solid fa-xmark cursor-pointer"
-                  onClick={() => setActive(!active)}
-                ></i>
+            {/* cart icon*/}
+            <div className="w-1/2 flex justify-center items-center">
+              <button onClick={() => setActive(!active)}>
+                <i className="text-blue relative fa-solid fa-cart-shopping fa-lg">
+                  <span className="bg-pink rounded-full w-4 text-center text-xs text-white absolute bottom-1 left-3">{count}</span>
+                </i>
+              </button>
+            </div>
+
+            {/* cart desplegado */}
+            <div className={`${active? "hidden" : "bg-white w-[850px]  right-8 top-7 overflow-hidden absolute"}`}>
+              <div className="flex justify-between p-4 border-4 border-black">
+                <h3>Mis compras</h3>
+                {/* botón cerrar del cart desplegado */}
+                <button className="w-8 h-8 p-1 rounded-2xl bg-slate-200 hover:bg-bpink flex items-center justify-center"
+                        onClick={() => setActive(!active)}>
+                  <i className="fa-solid fa-xmark"></i>
+                </button>
               </div>
 
-              <ul className="-my-6 divide-y divide-gray-200 mt-4">
+              <div>
+                <ul className="-my-6 divide-y divide-gray-200 mt-1 border-4 border-green-500">
                 {productsCart.map((product, index) => (
                   <li className="flex py-6">
                     <div
@@ -83,36 +84,27 @@ export default function Header({
                       />
 
                       <div className="flex flex-col justify-between text-right items-end">
-                        <div className="text-base font-medium text-gray-900">
-                          <p>{product.title}</p>
-                          <p>S/.{product.price}</p>
-                        </div>
-
                         <button
                           className=""
                           onClick={() => removeProductFromCart(index)}
                         >
-                          <i className="text-pink fa-solid fa-trash-can"></i>
+                          <i className="fa-solid fa-trash-can"></i>
                         </button>
+                        <div>
+                          <p>{product.title}</p>
+                          <span>S/.{product.price}</span>
+                        </div>
                       </div>
                     </div>
                   </li>
-                ))}
-              </ul>
-
-              <div className="flex justify-between border-t font-medium text-gray-900 border-gray-200 px-4 py-6 sm:px-6">
-                <p>Total</p>
-                <p> S/.{totalPrice}</p>
+                    
+                  ))}
+                </ul>
               </div>
 
-              <a
-                className="flex items-center justify-center rounded-md border border-transparent bg-blue px-6 py-3 font-medium text-white shadow-sm hover:bg-pink"
-                src="#"
-              >
-                Pagar
-              </a>
+              <span className="font-bold"> TOTAL: S/.{totalPrice}</span>
+              <button>Pagar</button>
             </div>
-
           </div>
         </div>
       </header>

@@ -6,7 +6,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const footButtSlice = createSlice({
   name:"footButtSlice",
   initialState: {
-    color:" bg-wblue", // No quitar el espacio al inicio
+    color:" bg-blue", // No quitar el espacio al inicio
   }
 })
 

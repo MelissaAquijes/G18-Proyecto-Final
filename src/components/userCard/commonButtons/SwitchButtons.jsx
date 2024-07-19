@@ -21,13 +21,13 @@ export default function SwitchButtons(props){
 
   return(
     <section id="switchButtons" className="h-[15%] flex items-center w-full">
-        <button className={`w-1/2 h-full flex justify-center items-center rounded-l-xl
+        <button className={`w-1/2 h-[80%] flex justify-center items-center rounded-l-xl
                             ${handleLoginButtonEffects(props.modalType)}`}
                 onClick={props.change2Login}>
           Iniciar Sesión
         </button>
 
-        <button className={`w-1/2 h-full flex justify-center items-center rounded-r-xl
+        <button className={`w-1/2 h-[80%] flex justify-center items-center rounded-r-xl
                             ${handleRegisterButtonEffects(props.modalType)}`}
                 onClick={props.change2Register}>
           Quiero unirme!
