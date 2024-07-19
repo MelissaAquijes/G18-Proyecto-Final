@@ -18,8 +18,6 @@ export default function Home() {
   const openUserModal = () => setModalStatus("open");
   const closeUserModal = () => setModalStatus("close");
 
-
-
   return (
     <>
 

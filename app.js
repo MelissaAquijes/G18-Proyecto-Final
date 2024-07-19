@@ -2,9 +2,6 @@ let sliderInners = document.querySelector(".sliderInner");
 let images = sliderInners.querySelectorAll("img");
 let index = 1
 
-
-
-
 setInterval(function(){
     let percentage = index * -100;
     sliderInners.style.transform = "translateX("+ percentage +"%)";
