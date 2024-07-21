@@ -6,7 +6,41 @@ export default function Header(props){
   // const [active, setActive] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
 
-  const removeProductFromCart = (index) => {
+  // Status:   True = Open  -  False = Close
+  var [cartStatus, setCartStatus] = useState(false);
+  const openCart = () => setCartStatus(true);
+  const closeCart = () => setCartStatus(false);
+
+
+  // Render Products
+  const productsToRenderInCart = props.productsCart.map((product, index) => (
+        <li className="flex py-6">
+          <div key={index} className="w-full h-28 mb-2 flex justify-between">
+            <img
+              className="h-full rounded-md border border-gray-200"
+              src={product.image}
+              alt={product.title}
+            />
+  
+            <div className="flex flex-col justify-between text-right items-end">
+              <button className="" onClick={() => removeProductFromCart(index)}>
+                <i className="fa-solid fa-trash-can"></i>
+              </button>
+              <div>
+                <p>{product.title}</p>
+                <span>S/.{product.price}</span>
+              </div>
+            </div>
+          </div>
+        </li> 
+      ))
+  
+  const renderCartProducts = (value) => {
+    return (value === 0)? (<p>Tu carrito aún no tiene productos. </p>) :  productsToRenderInCart;
+  }
+
+
+  const  removeProductFromCart = (index) => {
     const updatedCart = props.productsCart.filter((_, i) => i !== index); //metodo filter primer parametro ignoramos
     props.setProductsCart(updatedCart);
     props.setCountUser(props.count - 1);
@@ -23,10 +57,7 @@ export default function Header(props){
   }, [props.productsCart]);
 
 
-  // Status:   True = Open  -  False = Close
-  var [cartStatus, setCartStatus] = useState(false);
-  const openCart = () => setCartStatus(true);
-  const closeCart = () => setCartStatus(false);
+
 
   return (
     <>
@@ -43,7 +74,8 @@ export default function Header(props){
             <img className="w-[120px] " src={logo} />
           </a>
 
-          <div className="relative flex w-[100px] h-[40px]">
+          {/* Zona de íconos - user + cart */}
+          <div className="relative flex w-[100px] h-[40px] border-4 border-peach">
             
             {/* user icon*/}
             <div className="w-1/2 flex justify-center items-center">
@@ -51,8 +83,6 @@ export default function Header(props){
                 <i className="text-blue fa-regular fa-user fa-lg"></i>
               </button>
             </div>
-
-
 
 
             {/* cart icon*/}
@@ -64,67 +94,41 @@ export default function Header(props){
               </button>
             </div>
 
+          </div>
 
-            {/* cart desplegado */}
-            <div className={`bg-white w-[850px]  right-8 top-7 overflow-hidden absolute ${cartStatus? "" : "hidden"}`}>
+          {/* Cart desplegado */}
+          <div className={`bg-bmint w-[30%] h-full right-0 top-0 overflow-hidden absolute ${cartStatus? "" : "hidden"}`}>
 
-              <div className="flex justify-between p-4 border-4 border-black">
-                <h3>Mis compras</h3>
-                {/* botón cerrar del cart desplegado  bg-slate-200*/}
-                <button className="w-8 h-8 p-1 rounded-2xl bg-bpink hover:bg-pink flex items-center justify-center"
-                        onClick={closeCart}>
-                  <i className="fa-solid fa-xmark"></i>
-                </button>
-              </div>
+            {/* HEADER DEL CARRITO DESPLEGADO */}
+            <div className="flex justify-between p-4 border-4 border-black">
+              <h3>Mis Productos</h3>
+              {/* botón cerrar del cart desplegado  bg-slate-200*/}
+              <button className="w-8 h-8 p-1 rounded-2xl bg-bpink hover:bg-pink flex items-center justify-center"
+                      onClick={closeCart}>
+                <i className="fa-solid fa-xmark"></i>
+              </button>
+            </div>
 
-              <div>
-                <ul className="-my-6 divide-y divide-gray-200 mt-1 border-4 border-green-500">
-                {props.productsCart.map((product, index) => (
-                  <li className="flex py-6">
-                    <div
-                      key={index}
-                      className="w-full h-28 mb-2 flex justify-between"
-                    >
-                      <img
-                        className="h-full rounded-md border border-gray-200"
-                        src={product.image}
-                        alt={product.title}
-                      />
 
-                      <div className="flex flex-col justify-between text-right items-end">
-                        <button
-                          className=""
-                          onClick={() => removeProductFromCart(index)}
-                        >
-                          <i className="fa-solid fa-trash-can"></i>
-                        </button>
-                        <div>
-                          <p>{product.title}</p>
-                          <span>S/.{product.price}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                    
-                  ))}
-                </ul>
-              </div>
-
-              <span className="font-bold"> TOTAL: S/.{totalPrice}</span>
-              <button>Pagar</button>
+            {/* LISTADO DE PRODUCTOS EN EL CARRITO DESPLEGADO */}
+            <div className="flex justify-between p-4 border-4 border-black">
+              <ul className="my-1 w-full divide-y divide-gray-200 border-4 border-red-500">
+                {renderCartProducts(props.count)}
+              </ul>
             </div>
 
 
 
-
-
-
-
-
-
-
+            {/* FOOTER DEL CARRITO DESPLEGADO */}
+            <div className="flex justify-between p-4 border-4 border-black">
+              <span className="font-bold"> TOTAL: S/.{totalPrice}</span>
+              <button>Pagar</button>
+            </div>
 
           </div>
+
+            
+
         </div>
       </header>
     </>
