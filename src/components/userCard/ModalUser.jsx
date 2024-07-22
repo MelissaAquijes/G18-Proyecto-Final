@@ -25,7 +25,7 @@ export default function ModalUser(props){
 
   return(
     // {/* MODAL */}
-    <div id="modal" className={`relative z-50 w-full ${(props.modalStatus==="open")? "" : "hidden"}`}>
+    <div id="modal" className={`relative z-10 w-full ${(props.modalStatus==="open")? "" : "hidden"}`}>
 
       {/* Background oscuro del modal */}
       <div className="fixed inset-0 bg-black/70"></div>

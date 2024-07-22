@@ -1,7 +1,14 @@
 import { useState, useEffect } from "react";
 import logo from "../../assets/logo.png";
+import { useSelector } from "react-redux";
 
 export default function Header(props){
+
+  // VARIABLES GLOBALES
+  // Formato del botón pagar
+  const cartPayButtColor = useSelector((state)=>state.cartPayButtonFormat.buttonColor);
+  const cartPayButtBorder = useSelector((state)=>state.cartPayButtonFormat.borderColor);
+  const cartPayButtHover = useSelector((state)=>state.cartPayButtonFormat.hoverFormat);
 
   // const [active, setActive] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -10,7 +17,6 @@ export default function Header(props){
   var [cartStatus, setCartStatus] = useState(false);
   const openCart = () => setCartStatus(true);
   const closeCart = () => setCartStatus(false);
-
 
   // Render Products
   const productsToRenderInCart = props.productsCart.map((product, index) => (
@@ -39,7 +45,6 @@ export default function Header(props){
     return (value === 0)? (<p>Tu carrito aún no tiene productos. </p>) :  productsToRenderInCart;
   }
 
-
   const  removeProductFromCart = (index) => {
     const updatedCart = props.productsCart.filter((_, i) => i !== index); //metodo filter primer parametro ignoramos
     props.setProductsCart(updatedCart);
@@ -55,9 +60,6 @@ export default function Header(props){
     //usamos UseEffect para que automaticamente corra la funcion cuando algo se modifica en [productCart]
     calculateTotalPrice();
   }, [props.productsCart]);
-
-
-
 
   return (
     <>
@@ -97,11 +99,11 @@ export default function Header(props){
           </div>
 
           {/* Cart desplegado */}
-          <div className={`bg-bmint w-[30%] h-full right-0 top-0 overflow-hidden absolute ${cartStatus? "" : "hidden"}`}>
+          <aside className={`${cartStatus? "" : "hidden"} bg-bmint flex flex-col w-[30%] h-full absolute right-0 top-0 justify-between`}>
 
             {/* HEADER DEL CARRITO DESPLEGADO */}
-            <div className="flex justify-between p-4 border-4 border-black">
-              <h3>Mis Productos</h3>
+            <div className="flex justify-between h-[10%] p-4 border-4 border-yellow-500">
+              <h3 className="flex items-center">Mis Productos</h3>
               {/* botón cerrar del cart desplegado  bg-slate-200*/}
               <button className="w-8 h-8 p-1 rounded-2xl bg-bpink hover:bg-pink flex items-center justify-center"
                       onClick={closeCart}>
@@ -111,8 +113,8 @@ export default function Header(props){
 
 
             {/* LISTADO DE PRODUCTOS EN EL CARRITO DESPLEGADO */}
-            <div className="flex justify-between p-4 border-4 border-black">
-              <ul className="my-1 w-full divide-y divide-gray-200 border-4 border-red-500">
+            <div className="flex justify-between h-[70%] p-5 border-4 border-black overflow-auto">
+              <ul className="my-1 w-full divide-y divide-gray-200">
                 {renderCartProducts(props.count)}
               </ul>
             </div>
@@ -120,12 +122,15 @@ export default function Header(props){
 
 
             {/* FOOTER DEL CARRITO DESPLEGADO */}
-            <div className="flex justify-between p-4 border-4 border-black">
-              <span className="font-bold"> TOTAL: S/.{totalPrice}</span>
-              <button>Pagar</button>
+            <div className="flex flex-col h-[20%] justify-between p-4 border-4 border-yellow-500">
+              <div className="font-bold border-4"> TOTAL: S/.{totalPrice}</div>
+              <div className="font-bold">
+                <button className={"w-full p-2 rounded-xl text-xl".concat(cartPayButtColor,cartPayButtBorder,cartPayButtHover)}>PAGAR</button>
+              </div>
+              
             </div>
 
-          </div>
+          </aside>
 
             
 

@@ -31,11 +31,10 @@ export default function Home() {
         openUserModal={openUserModal}/>
 
 
-      <Filters
-        onAddProduct={addProductstoCart}/>
+      <Filters onAddProduct={addProductstoCart}/>
 
 
-      <Footer />
+      <Footer/>
     </>
   );
 }
