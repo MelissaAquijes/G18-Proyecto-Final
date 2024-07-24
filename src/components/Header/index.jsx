@@ -18,26 +18,70 @@ export default function Header(props){
   const openCart = () => setCartStatus(true);
   const closeCart = () => setCartStatus(false);
 
+
+  // Cantidades del carrito
+  const [minUnits,setMinUnits] = useState(1); // Cantidad mínima de un mismo producto
+  const [maxUnits,setMaxUnits] = useState(8); // Cantidad máxima de un mismo producto
+  var [productUnits, setProductUnits] = useState(1);
+
+  const maxLimitPerProductMessage = (units) => {
+    if(units >= maxUnits) {
+      return (
+        <div className="h-1/5 font-bold text-xs text-red-700 mt-1">
+          <p>Cantidad máxima de productos</p>
+        </div>
+      );
+    }
+  }
+ 
+  const incrementProductUnits = () => {
+    if(productUnits < maxUnits) return setProductUnits(productUnits+=1);
+    setProductUnits(maxUnits);
+
+  }
+
+  const decrementProductUnits = () => {
+    if(productUnits > minUnits) return setProductUnits(productUnits-=1);
+    setProductUnits(1);    
+  }
+
   // Render Products
   const productsToRenderInCart = props.productsCart.map((product, index) => (
-        <li className="flex py-6">
-          <div key={index} className="w-full h-28 mb-2 flex justify-between">
-            <img
-              className="h-full rounded-md border border-gray-200"
-              src={product.image}
-              alt={product.title}
-            />
-  
-            <div className="flex flex-col justify-between text-right items-end">
-              <button className="" onClick={() => removeProductFromCart(index)}>
-                <i className="fa-solid fa-trash-can"></i>
+        <li className="flex flex-col h-[35%] mb-1">
+          <div className="flex h-4/5">
+            <div className="flex flex-col w-[15%] h-full justify-center gap-2 items-center">
+              <button onClick={incrementProductUnits} className="w-3/5 h-[20%] flex justify-center items-center border rounded-xl bg-gray-200 hover:bg-peach">
+                <i className="fa-solid fa-angle-up"></i>
               </button>
-              <div>
-                <p>{product.title}</p>
-                <span>S/.{product.price}</span>
-              </div>
+
+              <p className="w-3/5 bg-white border text-center rounded-md">{productUnits}</p>
+
+              <button onClick={decrementProductUnits} className="w-3/5 h-[20%] flex justify-center items-center border rounded-xl bg-gray-200 hover:bg-peach">
+                <i className="fa-solid fa-angle-down"></i>
+              </button>
             </div>
+              
+            <div  className="flex w-[85%] h-full items-center justify-between mb-2">
+              <img
+                className="h-4/5 rounded-md border border-gray-200"
+                src={product.image}
+                alt={product.title}
+              />
+    
+              <div className="flex flex-col h-full justify-center text-right items-end">
+                <button className="" onClick={() => removeProductFromCart(index)}>
+                  <i className="fa-solid fa-trash-can"></i>
+                </button>
+                <div className="flex flex-col items-end">
+                  <p className="">{product.title}</p>
+                  <span className="">S/.{product.price}</span>
+                </div>
+              </div>
+            </div>  
           </div>
+
+          {maxLimitPerProductMessage(productUnits)}   
+          
         </li> 
       ))
   
@@ -57,7 +101,7 @@ export default function Header(props){
   };
 
   useEffect(() => {
-    //usamos UseEffect para que automaticamente corra la funcion cuando algo se modifica en [productCart]
+    //usamos UseEffect para que automáticamente corra la funcion cuando algo se modifica en [productCart]
     calculateTotalPrice();
   }, [props.productsCart]);
 
@@ -114,11 +158,10 @@ export default function Header(props){
 
             {/* LISTADO DE PRODUCTOS EN EL CARRITO DESPLEGADO */}
             <div className="flex justify-between h-[70%] p-5 border-4 border-black overflow-auto">
-              <ul className="my-1 w-full divide-y divide-gray-200">
+              <ul className="my-1 w-full divide-y-4 divide-gray-200">
                 {renderCartProducts(props.count)}
               </ul>
             </div>
-
 
 
             {/* FOOTER DEL CARRITO DESPLEGADO */}

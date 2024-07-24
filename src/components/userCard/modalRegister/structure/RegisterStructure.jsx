@@ -15,19 +15,19 @@ export default function RegisterStructure(props){
         ${displayContent(props.modalType)}`}>
 
         <RegisterHeader/>
-
+  
         {/*  Contenido del modal */}
-        <div id="modal-content" className="w-full h-[85%]"
+        <div id="modalRegister-content" className="w-full h-[85%]"
              onSubmit={handleFormSubmit}>
 
-          <form action="" id="form-edit" className="w-full h-full font-bold flex flex-col justify-between">
+          <div id="modalRegisterForm" className="w-full h-full font-bold flex flex-col justify-between">
             <SwitchButtons 
               modalType={props.modalType}
               change2Login={props.change2Login}
               change2Register={props.change2Register}/>
             <RegisterFields/>
-            <RegisterFooter/>
-          </form>
+            {/* <RegisterFooter/> */}
+          </div>
 
         </div>
       </div>
