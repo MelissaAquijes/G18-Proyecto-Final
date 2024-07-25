@@ -11,7 +11,12 @@ export default function Home() {
 
   const addProductstoCart = (productData) => {
     setCount(count + 1);
+
+    if(cartProducts.length === 0) {
+      setCartProducts(cartProducts.push(productData));
+    }
     setCartProducts([...cartProducts, productData]);
+    console.log(cartProducts);
   };
 
   var [modalStatus, setModalStatus] = useState("close");
@@ -31,7 +36,8 @@ export default function Home() {
         openUserModal={openUserModal}/>
 
 
-      <Filters onAddProduct={addProductstoCart}/>
+      <Filters onAddProduct={addProductstoCart}/> 
+
 
 
       <Footer/>
