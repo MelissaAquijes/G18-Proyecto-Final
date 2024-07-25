@@ -11,14 +11,17 @@ export default function Home() {
 
   const addProductstoCart = (productData) => {
     setCount(count + 1);
+
+    if(cartProducts.length === 0) {
+      setCartProducts(cartProducts.push(productData));
+    }
     setCartProducts([...cartProducts, productData]);
+    console.log(cartProducts);
   };
 
   var [modalStatus, setModalStatus] = useState("close");
   const openUserModal = () => setModalStatus("open");
   const closeUserModal = () => setModalStatus("close");
-
-
 
   return (
     <>
@@ -33,11 +36,11 @@ export default function Home() {
         openUserModal={openUserModal}/>
 
 
-      <Filters
-        onAddProduct={addProductstoCart}/>
+      <Filters onAddProduct={addProductstoCart}/> 
 
 
-      <Footer />
+
+      <Footer/>
     </>
   );
 }

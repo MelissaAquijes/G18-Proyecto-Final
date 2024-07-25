@@ -1,5 +1,5 @@
-export default function Cards(props) {
-  const { products } = props;
+export default function Cards({products, onAddProduct}) {
+  
   return (
     <>
       <section className="m-auto flex justify-center">
@@ -18,7 +18,7 @@ export default function Cards(props) {
                 <p className="font-bold md:text-xl">S/.{product.price}</p>
                 <button
                   className="bg-black text-white font-bold transition-all text-xs py-3 px-6 rounded-lg shadow-gray-900/10 hover:shadow-gray-900/20 hover:bg-pink w-full hover:scale-105 focus:scale-105 active:scale-110 md: mx-4"
-                  onClick={()=>props.onAddProduct(product)}
+                  onClick={()=> onAddProduct(product)}
                 >
                   Añadir al carrito
                 </button>

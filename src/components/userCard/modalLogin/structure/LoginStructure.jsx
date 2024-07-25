@@ -6,11 +6,11 @@ export default function LoginStructure(props){
 
   const displayContent = (modal) => (modal === "login")? "" : "hidden";
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    await createUser(props.values.email, props.values.pswd);
+  // const handleFormSubmit = async (event) => {
+  //   event.preventDefault();
+  //   await createUser(props.values.email, props.values.pswd);
     
-  }
+  // }
 
   return(
     <>
@@ -20,20 +20,25 @@ export default function LoginStructure(props){
         <LoginHeader/>
 
         {/*  Contenido del modalLogin */}
-        <div id="modal-content" className="w-full h-[85%]">
+        <div id="modalLogin-content" className="w-full h-[85%]">
 
-          <form action="" id="form-edit" 
-                className="w-full h-full font-bold flex flex-col justify-between"
-                onSubmit={handleFormSubmit}>
+          <div id="modalLoginForm" 
+               className="w-full h-full font-bold flex flex-col justify-between"
+               //onSubmit={handleFormSubmit}
+          >
             <SwitchButtons 
               modalType={props.modalType}
               change2Login={props.change2Login}
               change2Register={props.change2Register}/>
+              
             <LoginFields 
-              values={props.values}
-              handleInputChange={props.handleInputChange}/>
-            <LoginFooter/>
-          </form>
+              //values={props.values}
+              // handleInputChange={props.handleInputChange}
+            />
+
+
+            {/* <LoginFooter/> */}
+          </div>
 
         </div>
 

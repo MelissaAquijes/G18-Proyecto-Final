@@ -55,8 +55,7 @@ export default function Filters(props) {
 
       <Cards
         products={sortedProducts}
-        onAddProduct={props.onAddProduct}
-      />
+        onAddProduct={props.onAddProduct}/>
     </>
   );
 }

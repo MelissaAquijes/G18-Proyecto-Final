@@ -1,31 +1,43 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { getEmailInput, getPasswordInput} from "../../app/slices/formInputSlice";
 import {LoginStructure, RegisterStructure, CloseButton} from "../index";
 
 
 
 export default function ModalUser(props){
 
+  const dispatch = useDispatch();
+
   var [modalType,setModalType] = useState("login");
 
-  const change2Register = () => setModalType("register")
-  const change2Login = () => setModalType("login")
-
-  const [values,setValues] = useState({
-    email: "",
-    pswd: "",
-  });
-
-  const handleInputChange = (event) => {
-    const {name,value} = event.target;
-    setValues({
-      ...values,
-      [name]: value,
-    })
+  const change2Register = () => {
+    dispatch(getEmailInput(""));
+    dispatch(getPasswordInput(""));
+    return setModalType("register")
   }
+  const change2Login = () => {
+    dispatch(getEmailInput(""));
+    dispatch(getPasswordInput(""));
+    return setModalType("login")
+  }
+
+  // const [values,setValues] = useState({
+  //   email: "",
+  //   pswd: "",
+  // });
+
+  // const handleInputChange = (event) => {
+  //   const {name,value} = event.target;
+  //   setValues({
+  //     ...values,
+  //     [name]: value,
+  //   })
+  // }
 
   return(
     // {/* MODAL */}
-    <div id="modal" className={`relative z-50 w-full ${(props.modalStatus==="open")? "" : "hidden"}`}>
+    <div id="modal" className={`relative z-10 w-full ${(props.modalStatus==="open")? "" : "hidden"}`}>
 
       {/* Background oscuro del modal */}
       <div className="fixed inset-0 bg-black/70"></div>
@@ -37,8 +49,9 @@ export default function ModalUser(props){
         <LoginStructure modalType={modalType}
                         change2Login={change2Login}
                         change2Register={change2Register}
-                        values={values}
-                        handleInputChange={handleInputChange}/>
+                        // values={values}
+                        // 
+        />
 
         <RegisterStructure modalType={modalType}
                            change2Login={change2Login}
