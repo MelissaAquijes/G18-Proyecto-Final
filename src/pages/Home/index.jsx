@@ -4,14 +4,16 @@ import Filters from "../../components/Filters";
 import Footer from "../../components/Footer";
 import ModalUser from "../../components/userCard/ModalUser";
 
-
 export default function Home() {
   var [count, setCount] = useState(0);
   var [productsCart, setproductsCart] = useState([]);
+  
+  // Cantidades del carrito
+  const [minUnits,setMinUnits] = useState(1); // Cantidad mínima de un mismo producto
+  const [maxUnits,setMaxUnits] = useState(8); // Cantidad máxima de un mismo producto
 
   // Arreglo que almacena las cantidades unitarias a comprar
   // elegidas por el usuario en el carrito
-  var [repeatedProductIndex, setRepeatedProductIndex] = useState(0);
   var [unitsPerProduct, setunitsPerProduct] = useState([]);
 
   // var [a, seta] = useState([{id:1,name:"primero"},{id:2,name:"segundo"},{id:3,name:"tercero"}]);
@@ -19,41 +21,29 @@ export default function Home() {
   // Función para determinar si el nuevo producto a añadir
   // ya se encuentra agregado al carrito
   const isRepeatedProduct = (newProduct) => {
-    
-    const verifyProductsInCart = productsCart.filter((product)=> product.id === newProduct.id);
-    
-    if (verifyProductsInCart.length > 0) {
-      setRepeatedProductIndex(productsCart.findIndex((product)=> product.id === newProduct.id));
-      console.log("if de repetición", repeatedProductIndex, verifyProductsInCart);
-      return true;
-    }
-    console.log("else de repetición");
-    return false;     
-  }
+    return productsCart.findIndex((product) => product.id === newProduct.id) >= 0? 
+           true: false;
+  };
 
   const addProductstoCart = (productData) => {
-    setCount(count+1);
-    
-    if(isRepeatedProduct(productData)) { 
-      setproductsCart([...productsCart]);
-      
-      const productUnits = unitsPerProduct.map((price,index)=>{
-        if(index === repeatedProductIndex) {
-          return price + 1;
-        } else {
-          return price;
-        }  
-      })
+    setCount(count + 1);
+
+    if (isRepeatedProduct(productData)) {
+      const productUnits = unitsPerProduct.map((units, index) => {
+        
+        if (index === productsCart.findIndex((product) => product.id === productData.id && units < maxUnits)){
+          return units + 1;
+        } return units;
+               
+        // return index === productsCart.findIndex((product) => product.id === productData.id)? 
+        // units + 1 : units;
+      });
 
       setunitsPerProduct(productUnits);
-      console.log("Esto es el if de addProducts");
-      console.log(productUnits);
-    } 
-    else {
-      console.log("Esto es el else de addProducts");
-      setproductsCart([...productsCart,productData]);
-      setunitsPerProduct([...unitsPerProduct,1]);
-      console.log(unitsPerProduct);
+      setproductsCart([...productsCart]);
+    } else {
+      setunitsPerProduct([...unitsPerProduct, 1]);
+      setproductsCart([...productsCart, productData]);
     }
   };
 
@@ -63,23 +53,23 @@ export default function Home() {
 
   return (
     <>
-
-      <ModalUser modalStatus={modalStatus} closeUserModal={closeUserModal}/>
+      <ModalUser modalStatus={modalStatus} closeUserModal={closeUserModal} />
 
       <Header
+        maxUnits={maxUnits}
+        minUnits={minUnits}
         count={count}
+        setCount={setCount}
         productsCart={productsCart}
         setProductsCart={setproductsCart}
-        setCountUser={setCount}
         unitsPerProduct={unitsPerProduct}
-        openUserModal={openUserModal}/>
+        setunitsPerProduct={setunitsPerProduct}
+        openUserModal={openUserModal}
+      />
 
+      <Filters onAddProduct={addProductstoCart} />
 
-      <Filters onAddProduct={addProductstoCart}/> 
-
-
-
-      <Footer/>
+      <Footer />
     </>
   );
 }

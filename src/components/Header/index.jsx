@@ -22,23 +22,24 @@ export default function Header(props){
   // Eliminar productos del carrito
   const  removeProductFromCart = (index) => {
     const updatedCart = props.productsCart.filter((_, i) => i !== index); //metodo filter primer parametro ignoramos
-
-    // const productUnits = unitsPerProduct.filter((_,i)=> i !== 
-    // index); // borra el elemento del array de unidades
-
-
     props.setProductsCart(updatedCart);
-    props.setCountUser(props.count - 1);
+
+    // Primero actualiza la cuenta del carrito
+    const updatedCount = props.count - props.unitsPerProduct[index];
+    props.setCount(updatedCount);
+
+    // Luego elimina el elemento
+    const updatedproductUnits = props.unitsPerProduct.filter((_,i)=> i !== 
+    index); // borra el elemento del array de unidades
+    props.setunitsPerProduct(updatedproductUnits);
+
   };
 
 
-  // Cantidades del carrito
-  const [minUnits,setMinUnits] = useState(1); // Cantidad mínima de un mismo producto
-  const [maxUnits,setMaxUnits] = useState(8); // Cantidad máxima de un mismo producto
-  var [productUnits, setProductUnits] = useState(1);
+  // var [productUnits, setProductUnits] = useState(1);
 
   const maxLimitPerProductMessage = (units) => {
-    if(units >= maxUnits) {
+    if(units >= props.maxUnits) {
       return (
         <div className="h-1/5 font-bold text-xs text-red-700 mt-1">
           <p>Cantidad máxima de productos</p>
@@ -47,14 +48,26 @@ export default function Header(props){
     }
   }
  
-  const incrementProductUnits = () => {
-    if(productUnits < maxUnits) return setProductUnits(productUnits+=1);
-    setProductUnits(maxUnits);
+  const incrementProductUnits = (productUnits,indexProd) => {
+    const updatedUnits = props.unitsPerProduct.map((units, index) => {
+      if (index === indexProd && productUnits < props.maxUnits){
+        props.setCount(props.count+1);
+        return units + 1;
+      } return units; 
+    });
+    
+    return props.setunitsPerProduct(updatedUnits);
   }
 
-  const decrementProductUnits = () => {
-    if(productUnits > minUnits) return setProductUnits(productUnits-=1);
-    setProductUnits(1);    
+  const decrementProductUnits = (productUnits,indexProd) => {
+    const updatedUnits = props.unitsPerProduct.map((units, index) => {
+      if (index === indexProd && productUnits > props.minUnits){
+        props.setCount(props.count-1);
+        return units - 1;
+      } return units; 
+    });
+    
+    return props.setunitsPerProduct(updatedUnits);  
   }
 
   // Render Products
@@ -64,13 +77,13 @@ export default function Header(props){
         <li key={product.id} className="flex flex-col h-[35%] mb-1">
           <div className="flex h-4/5">
             <div className="flex flex-col w-[15%] h-full justify-center gap-2 items-center">
-              <button onClick={incrementProductUnits} className="w-3/5 h-[20%] flex justify-center items-center border rounded-xl bg-gray-200 hover:bg-peach">
+              <button onClick={()=>incrementProductUnits(props.unitsPerProduct[index],index)} className="w-3/5 h-[20%] flex justify-center items-center border rounded-xl bg-gray-200 hover:bg-peach">
                 <i className="fa-solid fa-angle-up"></i>
               </button>
 
               <p className="w-3/5 bg-white border text-center rounded-md">{props.unitsPerProduct[index]}</p>
 
-              <button onClick={decrementProductUnits} className="w-3/5 h-[20%] flex justify-center items-center border rounded-xl bg-gray-200 hover:bg-peach">
+              <button onClick={()=>decrementProductUnits(props.unitsPerProduct[index],index)} className="w-3/5 h-[20%] flex justify-center items-center border rounded-xl bg-gray-200 hover:bg-peach">
                 <i className="fa-solid fa-angle-down"></i>
               </button>
             </div>
@@ -94,7 +107,7 @@ export default function Header(props){
             </div>  
           </div>
 
-          {maxLimitPerProductMessage(productUnits)}   
+          {maxLimitPerProductMessage(props.unitsPerProduct[index])}   
           
         </li> 
       )}
@@ -119,7 +132,7 @@ export default function Header(props){
 
 
   const handlePagar = () => {
-    console.log(props.productsCart);
+    console.log(props.productsCart,props.unitsPerProduct);
   }
 
   return (
@@ -165,6 +178,8 @@ export default function Header(props){
             {/* HEADER DEL CARRITO DESPLEGADO */}
             <div className="flex justify-between h-[10%] p-4 border-4 border-yellow-500">
               <h3 className="flex items-center">Mis Productos</h3>
+              <span className="bg-pink rounded-full w-10 h-10 text-center text-2xl text-white">{props.count}</span>
+
               {/* botón cerrar del cart desplegado  bg-slate-200*/}
               <button className="w-8 h-8 p-1 rounded-2xl bg-bpink hover:bg-pink flex items-center justify-center"
                       onClick={closeCart}>
