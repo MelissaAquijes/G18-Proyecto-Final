@@ -6,6 +6,7 @@ import Cards from "../Cards";
 
 export default function Filters(props) {
   const { products } = useGetProduct();
+  console.log(products)
   const [category, setCategory] = useState('All');
   const [filteredProducts, setFilteredProducts] = useState(products); // Estado para los productos filtrados
   const [sortedProducts, setSortedProducts] = useState(products); // Estado para los productos ordenados
