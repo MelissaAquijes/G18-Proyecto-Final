@@ -93,7 +93,6 @@ d
       const data = await response.json();
       console.log("Datos de registro:", data);
       alert("Registro exitoso");
-
     } catch (error) {
       console.error("Error en el registro:", error);
     }

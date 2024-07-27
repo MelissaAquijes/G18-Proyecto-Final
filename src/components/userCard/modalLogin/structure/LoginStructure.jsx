@@ -39,8 +39,6 @@ export default function LoginStructure(props) {
             //values={props.values}
             // handleInputChange={props.handleInputChange}
             />
-
-            {/* <LoginFooter/> */}
           </div>
         </div>
       </div>
