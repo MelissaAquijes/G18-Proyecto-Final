@@ -3,9 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const swButtColSlice = createSlice({
   name: "swButtColSlice",
-  initialState:{
+  initialState: {
     color: " bg-blue", // No quitar el espacio al inicio
   },
-})
+});
 
 export const swButtColSliceReducer = swButtColSlice.reducer;

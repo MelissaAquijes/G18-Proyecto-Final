@@ -6,7 +6,8 @@ const cartPayButtSlice = createSlice({
   initialState: {
     buttonColor: " bg-blue", // No quitar espacio del inicio
     borderColor: " ", // No quitar el espacio al inicio
-    hoverFormat: " hover:border-4 hover:border-sky-500 hover:duration-200 hover:text-2xl",
+    hoverFormat:
+      " hover:border-4 hover:border-sky-500 hover:duration-200 hover:text-2xl",
   },
 });
 

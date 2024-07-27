@@ -4,7 +4,6 @@ import Filters from "../../components/Filters";
 import Footer from "../../components/Footer";
 import ModalUser from "../../components/userCard/ModalUser";
 
-
 export default function Home() {
   const [count, setCount] = useState(0);
   const [cartProducts, setCartProducts] = useState([]);
@@ -12,7 +11,7 @@ export default function Home() {
   const addProductstoCart = (productData) => {
     setCount(count + 1);
 
-    if(cartProducts.length === 0) {
+    if (cartProducts.length === 0) {
       setCartProducts(cartProducts.push(productData));
     }
     setCartProducts([...cartProducts, productData]);
@@ -25,22 +24,19 @@ export default function Home() {
 
   return (
     <>
-
-      <ModalUser modalStatus={modalStatus} closeUserModal={closeUserModal}/>
+      <ModalUser modalStatus={modalStatus} closeUserModal={closeUserModal} />
 
       <Header
         count={count}
         productsCart={cartProducts}
         setProductsCart={setCartProducts}
         setCountUser={setCount}
-        openUserModal={openUserModal}/>
+        openUserModal={openUserModal}
+      />
 
+      <Filters onAddProduct={addProductstoCart} />
 
-      <Filters onAddProduct={addProductstoCart}/> 
-
-
-
-      <Footer/>
+      <Footer />
     </>
   );
 }

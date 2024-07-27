@@ -6,7 +6,7 @@ const modBorderSlice = createSlice({
   name: "modBorderSilce",
   initialState: {
     color: " hover:border-sky-500", // No quitar el espacio al inicio
-  }
-}) 
+  },
+});
 
 export const modBorderSliceReducer = modBorderSlice.reducer;

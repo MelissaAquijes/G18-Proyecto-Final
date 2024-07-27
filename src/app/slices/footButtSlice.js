@@ -4,10 +4,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const footButtSlice = createSlice({
-  name:"footButtSlice",
+  name: "footButtSlice",
   initialState: {
     color: " bg-blue", // No quitar el espacio al inicio
-  }
-})
+  },
+});
 
 export const footButtSliceReducer = footButtSlice.reducer;
