@@ -1,9 +1,11 @@
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 
+
 //Public Key
 initMercadoPago("TEST-d06edb11-cc31-48ed-acf7-0e8007c6c1e7");
 
 export default function PayProducts () {
+   
   return(
     <main className="max-w-lg m-auto border-4 border-black">
       <section className="p-6">
@@ -11,7 +13,9 @@ export default function PayProducts () {
           Integrando MercadoPago
         </h1>
         <Wallet initialization={{preferenceId:'1146510377-7ce92a1d-61a2-482c-9586-6d02740b0888'}}/>
+
       </section>
+
     </main>
   );
 }

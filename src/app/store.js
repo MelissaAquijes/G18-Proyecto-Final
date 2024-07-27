@@ -2,7 +2,8 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import {swButtColSliceReducer,modBorderSliceReducer,
         footButtSliceReducer,cartPayButtSliceReducer,
-        formInputSliceReducer} from "./exports";
+        formInputSliceReducer,cartProductsDataSliceReducer
+       } from "./exports";
 
 
 export const globalStore = configureStore({
@@ -12,5 +13,6 @@ export const globalStore = configureStore({
     footButtonColor: footButtSliceReducer,
     cartPayButtonFormat: cartPayButtSliceReducer,
     formInputs: formInputSliceReducer,
+    cartProductsData: cartProductsDataSliceReducer,
   },
 });

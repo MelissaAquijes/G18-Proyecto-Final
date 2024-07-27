@@ -1,14 +1,39 @@
 import { useState, useEffect } from "react";
 import logo from "../../assets/logo.png";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setCartProductsArray, 
+         setCartUnitsArray,
+         setCartTotalPrice } from "../../app/slices/cartProductsData";
 
 export default function Header(props){
+  const dispatch = useDispatch();
 
   // VARIABLES GLOBALES
   // Formato del botón pagar
   const cartPayButtColor = useSelector((state)=>state.cartPayButtonFormat.buttonColor);
   const cartPayButtBorder = useSelector((state)=>state.cartPayButtonFormat.borderColor);
   const cartPayButtHover = useSelector((state)=>state.cartPayButtonFormat.hoverFormat);
+
+
+
+  // DATOS DE LOS PRODUCTOS: MODELO + PRECIO
+  const cartRenderProducts = useSelector((state)=>state.cartProductsData.cartProductsArray);
+  const cartRenderUnits = useSelector((state)=>state.cartProductsData.cartUnitsArray);
+  const cartTotalPrice = useSelector((state)=>state.cartProductsData.cartTotalPrice);
+  // Uso de reducers para el renderizado del resumen de compra
+  const handleCartRenderProducts = (array) => {
+    dispatch(setCartProductsArray(array));
+  };
+
+  const handleCartRenderUnits = (array) => {
+    dispatch(setCartUnitsArray(array));
+  };
+
+  const handleCartTotalPrice = (totalPrice) => {
+    dispatch(setCartTotalPrice(totalPrice));
+  };
+
+
 
   // const [active, setActive] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -23,6 +48,7 @@ export default function Header(props){
   const  removeProductFromCart = (index) => {
     const updatedCart = props.productsCart.filter((_, i) => i !== index); //metodo filter primer parametro ignoramos
     props.setProductsCart(updatedCart);
+    handleCartRenderProducts(updatedCart);
 
     // Primero actualiza la cuenta del carrito
     const updatedCount = props.count - props.unitsPerProduct[index];
@@ -32,7 +58,7 @@ export default function Header(props){
     const updatedproductUnits = props.unitsPerProduct.filter((_,i)=> i !== 
     index); // borra el elemento del array de unidades
     props.setunitsPerProduct(updatedproductUnits);
-
+    handleCartRenderUnits(updatedproductUnits);
   };
 
 
@@ -55,7 +81,7 @@ export default function Header(props){
         return units + 1;
       } return units; 
     });
-    
+    handleCartRenderUnits(updatedUnits);
     return props.setunitsPerProduct(updatedUnits);
   }
 
@@ -66,7 +92,7 @@ export default function Header(props){
         return units - 1;
       } return units; 
     });
-    
+    handleCartRenderUnits(updatedUnits);
     return props.setunitsPerProduct(updatedUnits);  
   }
 
@@ -119,20 +145,26 @@ export default function Header(props){
     return (value === 0)? (<p>Tu carrito aún no tiene productos. </p>) :  productsToRenderInCart;
   }
 
+  // const cartRenderProducts = useSelector((state)=>state.cartProductsData.cartProductsArray);
+  // const cartRenderUnits = useSelector((state)=>state.cartProductsData.
 
+  //CÁLCULO DEL PRECIO TOTAL
   const calculateTotalPrice = () => {
-    const total = props.productsCart.reduce((accumulator, product) => accumulator + product.price, 0);
-    setTotalPrice(total);
+    // const total = props.productsCart.reduce((accumulator, product) => accumulator + product.price, 0);
+    // setTotalPrice(total);
+
+    handleCartTotalPrice(cartRenderProducts.reduce((accumulator, nextProduct) => accumulator + nextProduct.price*cartRenderUnits[cartRenderProducts.findIndex((elem)=>elem.id === nextProduct.id)], 0));
+    setTotalPrice(cartTotalPrice); 
   };
 
   useEffect(() => {
     //usamos UseEffect para que automáticamente corra la funcion cuando algo se modifica en [productCart]
     calculateTotalPrice();
-  }, [props.productsCart]);
+  }, [cartRenderUnits]);
 
 
   const handlePagar = () => {
-    console.log(props.productsCart,props.unitsPerProduct);
+    console.log(cartRenderProducts,cartRenderUnits,cartTotalPrice);
   }
 
   return (
@@ -198,16 +230,14 @@ export default function Header(props){
 
             {/* FOOTER DEL CARRITO DESPLEGADO */}
             <div className="flex flex-col h-[20%] justify-between p-4 border-4 border-yellow-500">
-              <div className="font-bold border-4"> TOTAL: S/.{totalPrice}</div>
+              <div className="font-bold border-4"> TOTAL: S/.{cartTotalPrice}</div>
               <div className="font-bold">
-                <button onClick={handlePagar} className={"w-full p-2 rounded-xl text-xl".concat(cartPayButtColor,cartPayButtBorder,cartPayButtHover)}><a href="http://localhost:5173/payments" target="_blank">PAGAR</a></button>
+                <a href="#" target=""><button onClick={handlePagar} className={"w-full p-2 rounded-xl text-xl".concat(cartPayButtColor,cartPayButtBorder,cartPayButtHover)}>PAGAR</button></a>
               </div>
               
             </div>
 
           </aside>
-
-            
 
         </div>
       </header>
