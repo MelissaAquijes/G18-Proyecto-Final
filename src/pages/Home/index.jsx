@@ -6,17 +6,55 @@ import ModalUser from "../../components/userCard/ModalUser";
 
 
 export default function Home() {
-  const [count, setCount] = useState(0);
-  const [cartProducts, setCartProducts] = useState([]);
+  var [count, setCount] = useState(0);
+  var [productsCart, setproductsCart] = useState([]);
+
+  // Arreglo que almacena las cantidades unitarias a comprar
+  // elegidas por el usuario en el carrito
+  var [repeatedProductIndex, setRepeatedProductIndex] = useState(0);
+  var [unitsPerProduct, setunitsPerProduct] = useState([]);
+
+  // var [a, seta] = useState([{id:1,name:"primero"},{id:2,name:"segundo"},{id:3,name:"tercero"}]);
+
+  // Función para determinar si el nuevo producto a añadir
+  // ya se encuentra agregado al carrito
+  const isRepeatedProduct = (newProduct) => {
+    
+    const verifyProductsInCart = productsCart.filter((product)=> product.id === newProduct.id);
+    
+    if (verifyProductsInCart.length > 0) {
+      setRepeatedProductIndex(productsCart.findIndex((product)=> product.id === newProduct.id));
+      console.log("if de repetición", repeatedProductIndex, verifyProductsInCart);
+      return true;
+    }
+    console.log("else de repetición");
+    return false;     
+  }
 
   const addProductstoCart = (productData) => {
-    setCount(count + 1);
+    setCount(count+1);
+    
+    if(isRepeatedProduct(productData)) { 
+      setproductsCart([...productsCart]);
+      
+      const productUnits = unitsPerProduct.map((price,index)=>{
+        if(index === repeatedProductIndex) {
+          return price + 1;
+        } else {
+          return price;
+        }  
+      })
 
-    if(cartProducts.length === 0) {
-      setCartProducts(cartProducts.push(productData));
+      setunitsPerProduct(productUnits);
+      console.log("Esto es el if de addProducts");
+      console.log(productUnits);
+    } 
+    else {
+      console.log("Esto es el else de addProducts");
+      setproductsCart([...productsCart,productData]);
+      setunitsPerProduct([...unitsPerProduct,1]);
+      console.log(unitsPerProduct);
     }
-    setCartProducts([...cartProducts, productData]);
-    console.log(cartProducts);
   };
 
   var [modalStatus, setModalStatus] = useState("close");
@@ -30,9 +68,10 @@ export default function Home() {
 
       <Header
         count={count}
-        productsCart={cartProducts}
-        setProductsCart={setCartProducts}
+        productsCart={productsCart}
+        setProductsCart={setproductsCart}
         setCountUser={setCount}
+        unitsPerProduct={unitsPerProduct}
         openUserModal={openUserModal}/>
 
 

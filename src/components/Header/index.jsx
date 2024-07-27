@@ -19,6 +19,19 @@ export default function Header(props){
   const closeCart = () => setCartStatus(false);
 
 
+  // Eliminar productos del carrito
+  const  removeProductFromCart = (index) => {
+    const updatedCart = props.productsCart.filter((_, i) => i !== index); //metodo filter primer parametro ignoramos
+
+    // const productUnits = unitsPerProduct.filter((_,i)=> i !== 
+    // index); // borra el elemento del array de unidades
+
+
+    props.setProductsCart(updatedCart);
+    props.setCountUser(props.count - 1);
+  };
+
+
   // Cantidades del carrito
   const [minUnits,setMinUnits] = useState(1); // Cantidad mínima de un mismo producto
   const [maxUnits,setMaxUnits] = useState(8); // Cantidad máxima de un mismo producto
@@ -37,7 +50,6 @@ export default function Header(props){
   const incrementProductUnits = () => {
     if(productUnits < maxUnits) return setProductUnits(productUnits+=1);
     setProductUnits(maxUnits);
-
   }
 
   const decrementProductUnits = () => {
@@ -46,15 +58,17 @@ export default function Header(props){
   }
 
   // Render Products
-  const productsToRenderInCart = props.productsCart.map((product, index) => (
-        <li className="flex flex-col h-[35%] mb-1">
+  const productsToRenderInCart = props.productsCart.map((product, index) => {
+    
+      return (
+        <li key={product.id} className="flex flex-col h-[35%] mb-1">
           <div className="flex h-4/5">
             <div className="flex flex-col w-[15%] h-full justify-center gap-2 items-center">
               <button onClick={incrementProductUnits} className="w-3/5 h-[20%] flex justify-center items-center border rounded-xl bg-gray-200 hover:bg-peach">
                 <i className="fa-solid fa-angle-up"></i>
               </button>
 
-              <p className="w-3/5 bg-white border text-center rounded-md">{productUnits}</p>
+              <p className="w-3/5 bg-white border text-center rounded-md">{props.unitsPerProduct[index]}</p>
 
               <button onClick={decrementProductUnits} className="w-3/5 h-[20%] flex justify-center items-center border rounded-xl bg-gray-200 hover:bg-peach">
                 <i className="fa-solid fa-angle-down"></i>
@@ -73,7 +87,7 @@ export default function Header(props){
                   <i className="fa-solid fa-trash-can"></i>
                 </button>
                 <div className="flex flex-col items-end">
-                  <p className="">{product.title}</p>
+                  <p className="">{product.title} {index}</p>
                   <span className="">S/.{product.price}</span>
                 </div>
               </div>
@@ -83,17 +97,15 @@ export default function Header(props){
           {maxLimitPerProductMessage(productUnits)}   
           
         </li> 
-      ))
-  
+      )}
+    
+    
+  )
+
   const renderCartProducts = (value) => {
     return (value === 0)? (<p>Tu carrito aún no tiene productos. </p>) :  productsToRenderInCart;
   }
 
-  const  removeProductFromCart = (index) => {
-    const updatedCart = props.productsCart.filter((_, i) => i !== index); //metodo filter primer parametro ignoramos
-    props.setProductsCart(updatedCart);
-    props.setCountUser(props.count - 1);
-  };
 
   const calculateTotalPrice = () => {
     const total = props.productsCart.reduce((accumulator, product) => accumulator + product.price, 0);
@@ -104,6 +116,11 @@ export default function Header(props){
     //usamos UseEffect para que automáticamente corra la funcion cuando algo se modifica en [productCart]
     calculateTotalPrice();
   }, [props.productsCart]);
+
+
+  const handlePagar = () => {
+    console.log(props.productsCart);
+  }
 
   return (
     <>
@@ -168,7 +185,7 @@ export default function Header(props){
             <div className="flex flex-col h-[20%] justify-between p-4 border-4 border-yellow-500">
               <div className="font-bold border-4"> TOTAL: S/.{totalPrice}</div>
               <div className="font-bold">
-                <button className={"w-full p-2 rounded-xl text-xl".concat(cartPayButtColor,cartPayButtBorder,cartPayButtHover)}>PAGAR</button>
+                <button onClick={handlePagar} className={"w-full p-2 rounded-xl text-xl".concat(cartPayButtColor,cartPayButtBorder,cartPayButtHover)}><a href="http://localhost:5173/payments" target="_blank">PAGAR</a></button>
               </div>
               
             </div>
