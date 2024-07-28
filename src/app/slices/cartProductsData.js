@@ -6,6 +6,7 @@ const cartProductsDataSlice = createSlice({
     cartProductsArray:[],
     cartUnitsArray:[],
     cartTotalPrice:0,
+    cartTotalUnits:0,
   },
 
   reducers:{
@@ -20,7 +21,13 @@ const cartProductsDataSlice = createSlice({
 
     setCartTotalPrice: (state,action) => {
       state.cartTotalPrice = action.payload;
+    },
+
+    setCartTotalUnits: (state,action) => {
+      state.cartTotalUnits = action.payload;
     }
+
+
 
   }
 })
@@ -28,4 +35,5 @@ const cartProductsDataSlice = createSlice({
 export const cartProductsDataSliceReducer = cartProductsDataSlice.reducer;
 export const {setCartProductsArray,
               setCartUnitsArray,
-              setCartTotalPrice} = cartProductsDataSlice.actions;
+              setCartTotalPrice,
+              setCartTotalUnits} = cartProductsDataSlice.actions;

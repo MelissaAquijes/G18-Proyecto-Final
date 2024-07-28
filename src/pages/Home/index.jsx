@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "../../components/Header";
 import Filters from "../../components/Filters";
 import Footer from "../../components/Footer";
 import ModalUser from "../../components/userCard/ModalUser";
 import { useSelector, useDispatch } from "react-redux";
 import { setCartProductsArray, 
-         setCartUnitsArray } from "../../app/slices/cartProductsData";
+         setCartUnitsArray,
+         setCartTotalPrice,
+         setCartTotalUnits } from "../../app/slices/cartProductsData";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -15,8 +17,10 @@ export default function Home() {
 
 
   // DATOS DE LOS PRODUCTOS: MODELO + PRECIO
-  // const cartRenderProducts = useSelector((state)=>state.cartProductsData.cartProductsArray);
-  // const cartRenderUnits = useSelector((state)=>state.cartProductsData.cartUnitsArray);
+  const cartRenderProducts = useSelector((state)=>state.cartProductsData.cartProductsArray);
+  const cartRenderUnits = useSelector((state)=>state.cartProductsData.cartUnitsArray);
+  const cartTotalPrice = useSelector((state)=>state.cartProductsData.cartTotalPrice);
+  const cartTotalUnits = useSelector((state)=>state.cartProductsData.cartTotalUnits);
   // Uso de reducers para el renderizado del resumen de compra
   const handleCartRenderProducts = (array) => {
     dispatch(setCartProductsArray(array));
@@ -26,7 +30,30 @@ export default function Home() {
     dispatch(setCartUnitsArray(array));
   };
 
+  const handleCartTotalPrice = (totalPrice) => {
+    dispatch(setCartTotalPrice(totalPrice));
+  };
 
+  const handleCartTotalUnits = (totalUnits) => {
+    dispatch(setCartTotalUnits(totalUnits));
+  };
+
+
+  const calculateTotalPrice = () => {
+    handleCartTotalPrice(cartRenderProducts.reduce((accumulator, nextProduct) => accumulator + nextProduct.price*cartRenderUnits[cartRenderProducts.findIndex((elem)=>elem.id === nextProduct.id)], 0));
+  };
+
+  // Cálculo del total de unidades
+  const calculateTotalUnits = () => {
+    handleCartTotalUnits(cartRenderUnits.reduce((accumulator, nextProduct) => accumulator + nextProduct, 0));
+  };
+
+
+  useEffect(() => {
+    //usamos UseEffect para que automáticamente corra la funcion cuando algo se modifica en [cartRenderUnits]
+    calculateTotalPrice();
+    calculateTotalUnits();
+  }, [cartRenderUnits]);
 
   // Cantidades del carrito
   const [minUnits,setMinUnits] = useState(1); // Cantidad mínima de un mismo producto
@@ -46,27 +73,27 @@ export default function Home() {
 
   const addProductstoCart = (productData) => {
     setCount(count + 1);
-
+    
     if (isRepeatedProduct(productData)) {
       const productUnits = unitsPerProduct.map((units, index) => {
         
-        if (index === productsCart.findIndex((product) => product.id === productData.id && units < maxUnits)){
+        if (index === productsCart.findIndex((product) => product.id === productData.id) && units < maxUnits){
           return units + 1;
         } return units;
                
-        // return index === productsCart.findIndex((product) => product.id === productData.id)? 
-        // units + 1 : units;
       });
 
       setunitsPerProduct(productUnits);
       handleCartRenderUnits(productUnits);
       setproductsCart([...productsCart]);
       handleCartRenderProducts([...productsCart]);
+      console.log(productsCart,cartRenderUnits,cartTotalPrice);
     } else {
       setunitsPerProduct([...unitsPerProduct, 1]);
       handleCartRenderUnits([...unitsPerProduct, 1]);
       setproductsCart([...productsCart, productData]);
       handleCartRenderProducts([...productsCart, productData]);
+      console.log(cartRenderProducts,unitsPerProduct,cartTotalPrice);
     }
   };
 

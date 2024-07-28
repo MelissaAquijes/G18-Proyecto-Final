@@ -3,7 +3,8 @@ import logo from "../../assets/logo.png";
 import { useSelector, useDispatch } from "react-redux";
 import { setCartProductsArray, 
          setCartUnitsArray,
-         setCartTotalPrice } from "../../app/slices/cartProductsData";
+         setCartTotalPrice,
+         setCartTotalUnits } from "../../app/slices/cartProductsData";
 
 export default function Header(props){
   const dispatch = useDispatch();
@@ -14,17 +15,17 @@ export default function Header(props){
   const cartPayButtBorder = useSelector((state)=>state.cartPayButtonFormat.borderColor);
   const cartPayButtHover = useSelector((state)=>state.cartPayButtonFormat.hoverFormat);
 
-
-
+  
   // DATOS DE LOS PRODUCTOS: MODELO + PRECIO
   const cartRenderProducts = useSelector((state)=>state.cartProductsData.cartProductsArray);
   const cartRenderUnits = useSelector((state)=>state.cartProductsData.cartUnitsArray);
   const cartTotalPrice = useSelector((state)=>state.cartProductsData.cartTotalPrice);
+  const cartTotalUnits = useSelector((state)=>state.cartProductsData.cartTotalUnits);
   // Uso de reducers para el renderizado del resumen de compra
   const handleCartRenderProducts = (array) => {
     dispatch(setCartProductsArray(array));
   };
-
+  
   const handleCartRenderUnits = (array) => {
     dispatch(setCartUnitsArray(array));
   };
@@ -33,6 +34,9 @@ export default function Header(props){
     dispatch(setCartTotalPrice(totalPrice));
   };
 
+  const handleCartTotalUnits = (totalUnits) => {
+    dispatch(setCartTotalUnits(totalUnits));
+  };
 
 
   // const [active, setActive] = useState(false);
@@ -43,7 +47,7 @@ export default function Header(props){
   const openCart = () => setCartStatus(true);
   const closeCart = () => setCartStatus(false);
 
-
+  
   // Eliminar productos del carrito
   const  removeProductFromCart = (index) => {
     const updatedCart = props.productsCart.filter((_, i) => i !== index); //metodo filter primer parametro ignoramos
@@ -53,6 +57,7 @@ export default function Header(props){
     // Primero actualiza la cuenta del carrito
     const updatedCount = props.count - props.unitsPerProduct[index];
     props.setCount(updatedCount);
+    handleCartTotalUnits(updatedCount);
 
     // Luego elimina el elemento
     const updatedproductUnits = props.unitsPerProduct.filter((_,i)=> i !== 
@@ -78,6 +83,7 @@ export default function Header(props){
     const updatedUnits = props.unitsPerProduct.map((units, index) => {
       if (index === indexProd && productUnits < props.maxUnits){
         props.setCount(props.count+1);
+        handleCartTotalUnits(props.count+1);
         return units + 1;
       } return units; 
     });
@@ -89,6 +95,7 @@ export default function Header(props){
     const updatedUnits = props.unitsPerProduct.map((units, index) => {
       if (index === indexProd && productUnits > props.minUnits){
         props.setCount(props.count-1);
+        handleCartTotalUnits(props.count-1);
         return units - 1;
       } return units; 
     });
@@ -157,14 +164,23 @@ export default function Header(props){
     setTotalPrice(cartTotalPrice); 
   };
 
+  // Cálculo del total de unidades
+  const calculateTotalUnits = () => {
+    // const total = props.productsCart.reduce((accumulator, product) => accumulator + product.price, 0);
+    // setTotalPrice(total);
+
+    handleCartTotalUnits(cartRenderUnits.reduce((accumulator, nextProduct) => accumulator + nextProduct, 0));
+  };
+
   useEffect(() => {
     //usamos UseEffect para que automáticamente corra la funcion cuando algo se modifica en [productCart]
     calculateTotalPrice();
+    calculateTotalUnits();
   }, [cartRenderUnits]);
 
 
   const handlePagar = () => {
-    console.log(cartRenderProducts,cartRenderUnits,cartTotalPrice);
+    console.log(cartRenderProducts,cartRenderUnits,cartTotalPrice,cartTotalUnits);
   }
 
   return (
@@ -197,7 +213,7 @@ export default function Header(props){
             <div className="w-1/2 flex justify-center items-center">
               <button onClick={openCart}>
                 <i className="text-blue relative fa-solid fa-cart-shopping fa-lg">
-                  <span className="bg-pink rounded-full w-4 text-center text-xs text-white absolute bottom-1 left-3">{props.count}</span>
+                  <span className="bg-pink rounded-full w-4 text-center text-xs text-white absolute bottom-1 left-3">{cartTotalUnits}</span>
                 </i>
               </button>
             </div>
@@ -210,7 +226,7 @@ export default function Header(props){
             {/* HEADER DEL CARRITO DESPLEGADO */}
             <div className="flex justify-between h-[10%] p-4 border-4 border-yellow-500">
               <h3 className="flex items-center">Mis Productos</h3>
-              <span className="bg-pink rounded-full w-10 h-10 text-center text-2xl text-white">{props.count}</span>
+              <span className="bg-pink rounded-full w-10 h-10 text-center text-2xl text-white">{cartTotalUnits}</span>
 
               {/* botón cerrar del cart desplegado  bg-slate-200*/}
               <button className="w-8 h-8 p-1 rounded-2xl bg-bpink hover:bg-pink flex items-center justify-center"
