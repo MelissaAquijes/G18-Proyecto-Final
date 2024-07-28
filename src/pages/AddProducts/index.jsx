@@ -29,7 +29,7 @@ export default function PostProducts() {
     SentData.append("img_url", img_url); 
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/v1/productos/", {
+      const response = await fetch("https://g18-backend.onrender.com/api/v1/productos/", {
         method: "POST",
         body: SentData,
       });
@@ -51,7 +51,7 @@ export default function PostProducts() {
 
   useEffect(() => {
     async function getCategories() {
-      const response = await fetch("http://127.0.0.1:8000/api/v1/categorias/");
+      const response = await fetch("https://g18-backend.onrender.com/api/v1/categorias/");
       const data = await response.json();
       setCategorias(data);
     }

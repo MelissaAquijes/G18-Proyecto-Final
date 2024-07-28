@@ -13,7 +13,7 @@ const ListProducts = () => {
   // Función para obtener los datos de la API
   const getData = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/v1/productos/");
+      const response = await fetch("https://g18-backend.onrender.com/api/v1/productos/");
       const data = await response.json();
       setDataApi(data);
     } catch (error) {
@@ -25,7 +25,7 @@ const ListProducts = () => {
   const deleteData = async (id) => {
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/api/v1/productos/${id}`,
+        `https://g18-backend.onrender.com/api/v1/productos/${id}`,
         {
           method: "DELETE",
           headers: {

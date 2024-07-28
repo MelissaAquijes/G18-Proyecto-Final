@@ -52,7 +52,7 @@ export default function LoginFields() {
 
     try {
       // Envía una solicitud POST al endpoint de registro usando fetch
-      const response = await fetch("http://127.0.0.1:8000/api/token/", {
+      const response = await fetch("https://g18-backend.onrender.com/api/token/", {
         method: "POST",
         // Especifica que tipo de datos voy a enviar mi servidor
         headers: {

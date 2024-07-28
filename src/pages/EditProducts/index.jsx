@@ -9,7 +9,7 @@ export default function EditProducts() {
   const [currentImage, setCurrentImage] = useState(""); // Para almacenar la URL de la imagen actual
 
   const getData = async () => {
-    const data = await fetch(`http://127.0.0.1:8000/api/v1/productos/${id}`);
+    const data = await fetch(`https://g18-backend.onrender.com/api/v1/productos/${id}`);
     const response = await data.json();
     setNombre(response.nombre);
     setPrecio(response.precio);
@@ -29,7 +29,7 @@ export default function EditProducts() {
     if (image) formData.append("image", image);
 
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/v1/productos/${id}`, {
+      const response = await fetch(`https://g18-backend.onrender.com/api/v1/productos/${id}`, {
         method: "PUT",
         body: formData,
       });
