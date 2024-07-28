@@ -1,5 +1,6 @@
 import { useState,useEffect } from "react";
 import Category from "../../components/Filters/Category";
+import { Link } from "react-router-dom";
 
 
 export default function PostProducts() {
@@ -36,6 +37,10 @@ export default function PostProducts() {
       if (response.ok) {
         console.log("Producto registrado con éxito");
         alert("registro existoso")
+        setNombre("")
+        setPrecio("")
+        setDescripcion("")
+        setImage("")
       } else {
         console.error("Error al registrar el producto");
       }
@@ -147,6 +152,14 @@ export default function PostProducts() {
           </button>
         </form>
       </main>
+
+      <Link to="/listproducts">
+      <div className="mt-4 flex justify-center p-4 bg-white shadow rounded-xl">
+        <button className="mt-4  bg-gray-300 hover:bg-purpuple-700 text-black font-bold py-5 px-7 rounded text-center items-center ">
+            ver lista de productos
+        </button>
+      </div>
+       </Link>
     </>
   );
 }

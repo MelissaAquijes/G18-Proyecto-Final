@@ -14,8 +14,8 @@ export default function Cards(props) {
               </div>
 
               <div className="p-3 flex items-center flex-col gap-3 md:gap-3.5 md:py-5">
-                <h2 className="text-xs text-center md:text-[16px]">{product.nombre}</h2>
-                <p className="font-bold md:text-xl">{product.descripcion}</p>
+                <h2 className="text-xl font-bold text-center md:text-[16px]">{product.nombre}</h2>
+                <p className=" md:text-sl">{product.descripcion}</p>
                 <p className="font-bold md:text-xl">S/.{product.precio}</p>
                 <button
                   className="bg-black text-white font-bold transition-all text-xs py-3 px-6 rounded-lg shadow-gray-900/10 hover:shadow-gray-900/20 hover:bg-pink w-full hover:scale-105 focus:scale-105 active:scale-110 md: mx-4"
