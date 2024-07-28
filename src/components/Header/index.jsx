@@ -15,7 +15,14 @@ export default function Header(props){
   const cartPayButtBorder = useSelector((state)=>state.cartPayButtonFormat.borderColor);
   const cartPayButtHover = useSelector((state)=>state.cartPayButtonFormat.hoverFormat);
 
-  
+  //LocalStorage
+  function saveDataInLocalStorage(){
+    localStorage.setItem("cartRenderProducts",JSON.stringify(cartRenderProducts));
+    localStorage.setItem("cartRenderUnits",JSON.stringify(cartRenderUnits));
+    localStorage.setItem("cartTotalPrice",JSON.stringify(cartTotalPrice));
+    localStorage.setItem("cartTotalUnits",JSON.stringify(cartTotalUnits));
+  }
+
   // DATOS DE LOS PRODUCTOS: MODELO + PRECIO
   const cartRenderProducts = useSelector((state)=>state.cartProductsData.cartProductsArray);
   const cartRenderUnits = useSelector((state)=>state.cartProductsData.cartUnitsArray);
@@ -37,7 +44,6 @@ export default function Header(props){
   const handleCartTotalUnits = (totalUnits) => {
     dispatch(setCartTotalUnits(totalUnits));
   };
-
 
   // const [active, setActive] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -64,6 +70,7 @@ export default function Header(props){
     index); // borra el elemento del array de unidades
     props.setunitsPerProduct(updatedproductUnits);
     handleCartRenderUnits(updatedproductUnits);
+    calculateTotalPrice();
   };
 
 
@@ -88,6 +95,7 @@ export default function Header(props){
       } return units; 
     });
     handleCartRenderUnits(updatedUnits);
+    calculateTotalPrice();
     return props.setunitsPerProduct(updatedUnits);
   }
 
@@ -100,6 +108,7 @@ export default function Header(props){
       } return units; 
     });
     handleCartRenderUnits(updatedUnits);
+    calculateTotalPrice();
     return props.setunitsPerProduct(updatedUnits);  
   }
 
@@ -157,18 +166,12 @@ export default function Header(props){
 
   //CÁLCULO DEL PRECIO TOTAL
   const calculateTotalPrice = () => {
-    // const total = props.productsCart.reduce((accumulator, product) => accumulator + product.price, 0);
-    // setTotalPrice(total);
-
     handleCartTotalPrice(cartRenderProducts.reduce((accumulator, nextProduct) => accumulator + nextProduct.price*cartRenderUnits[cartRenderProducts.findIndex((elem)=>elem.id === nextProduct.id)], 0));
     setTotalPrice(cartTotalPrice); 
   };
 
   // Cálculo del total de unidades
   const calculateTotalUnits = () => {
-    // const total = props.productsCart.reduce((accumulator, product) => accumulator + product.price, 0);
-    // setTotalPrice(total);
-
     handleCartTotalUnits(cartRenderUnits.reduce((accumulator, nextProduct) => accumulator + nextProduct, 0));
   };
 
@@ -176,7 +179,23 @@ export default function Header(props){
     //usamos UseEffect para que automáticamente corra la funcion cuando algo se modifica en [productCart]
     calculateTotalPrice();
     calculateTotalUnits();
-  }, [cartRenderUnits]);
+    saveDataInLocalStorage();
+
+    // const flag1 = localStorage.getItem("cartRenderProducts");
+    // const flag2 = localStorage.getItem("cartRenderUnits");
+    // const flag3 = localStorage.getItem("cartTotalPrice");
+    // const flag4 = localStorage.getItem("cartTotalUnits");
+
+    // const arr1 = flag1? [...JSON.parse(flag1)] : [];
+    // const arr2 = flag2? [...JSON.parse(flag2)] : [];
+    // const num3 = flag3? JSON.parse(flag3) : 0;
+    // const num4 = flag4? JSON.parse(flag4) : 0
+
+    // handleCartRenderProducts(arr1);
+    // handleCartRenderUnits(arr2);
+    // handleCartTotalPrice(num3);
+    // handleCartTotalUnits(num4);
+  });
 
 
   const handlePagar = () => {

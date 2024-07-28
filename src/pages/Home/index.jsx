@@ -15,6 +15,13 @@ export default function Home() {
   var [count, setCount] = useState(0);
   var [productsCart, setproductsCart] = useState([]);
 
+  //LocalStorage
+  function saveDataInLocalStorage(){
+    localStorage.setItem("cartRenderProducts",JSON.stringify(cartRenderProducts));
+    localStorage.setItem("cartRenderUnits",JSON.stringify(cartRenderUnits));
+    localStorage.setItem("cartTotalPrice",JSON.stringify(cartTotalPrice));
+    localStorage.setItem("cartTotalUnits",JSON.stringify(cartTotalUnits));
+  }
 
   // DATOS DE LOS PRODUCTOS: MODELO + PRECIO
   const cartRenderProducts = useSelector((state)=>state.cartProductsData.cartProductsArray);
@@ -53,7 +60,20 @@ export default function Home() {
     //usamos UseEffect para que automáticamente corra la funcion cuando algo se modifica en [cartRenderUnits]
     calculateTotalPrice();
     calculateTotalUnits();
-  }, [cartRenderUnits]);
+    saveDataInLocalStorage();
+
+    // const flag1 = localStorage.getItem("cartRenderProducts");
+    // const flag2 = localStorage.getItem("cartRenderUnits");
+    // const flag3 = localStorage.getItem("cartTotalPrice");
+    // const flag4 = localStorage.getItem("cartTotalUnits");
+
+
+
+    // handleCartRenderProducts(flag1? [...JSON.parse(flag1)] : []);
+    // handleCartRenderUnits(flag1? [...JSON.parse(flag2)] : []);
+    // handleCartTotalPrice(flag1? [...JSON.parse(flag3)] : []);
+    // handleCartTotalUnits(flag1? [...JSON.parse(flag4)] : []);
+  });
 
   // Cantidades del carrito
   const [minUnits,setMinUnits] = useState(1); // Cantidad mínima de un mismo producto
@@ -93,8 +113,12 @@ export default function Home() {
       handleCartRenderUnits([...unitsPerProduct, 1]);
       setproductsCart([...productsCart, productData]);
       handleCartRenderProducts([...productsCart, productData]);
+      calculateTotalPrice();
+      calculateTotalUnits();
       console.log(cartRenderProducts,unitsPerProduct,cartTotalPrice);
     }
+    calculateTotalPrice();
+    calculateTotalUnits();
   };
 
   var [modalStatus, setModalStatus] = useState("close");
@@ -115,6 +139,7 @@ export default function Home() {
         unitsPerProduct={unitsPerProduct}
         setunitsPerProduct={setunitsPerProduct}
         openUserModal={openUserModal}
+        saveDataInLocalStorage={saveDataInLocalStorage}
       />
 
       <Filters onAddProduct={addProductstoCart} />
