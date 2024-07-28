@@ -56,23 +56,12 @@ export default function Home() {
   };
 
 
+
   useEffect(() => {
     //usamos UseEffect para que automáticamente corra la funcion cuando algo se modifica en [cartRenderUnits]
     calculateTotalPrice();
     calculateTotalUnits();
     saveDataInLocalStorage();
-
-    // const flag1 = localStorage.getItem("cartRenderProducts");
-    // const flag2 = localStorage.getItem("cartRenderUnits");
-    // const flag3 = localStorage.getItem("cartTotalPrice");
-    // const flag4 = localStorage.getItem("cartTotalUnits");
-
-
-
-    // handleCartRenderProducts(flag1? [...JSON.parse(flag1)] : []);
-    // handleCartRenderUnits(flag1? [...JSON.parse(flag2)] : []);
-    // handleCartTotalPrice(flag1? [...JSON.parse(flag3)] : []);
-    // handleCartTotalUnits(flag1? [...JSON.parse(flag4)] : []);
   });
 
   // Cantidades del carrito
@@ -87,7 +76,7 @@ export default function Home() {
   // Función para determinar si el nuevo producto a añadir
   // ya se encuentra agregado al carrito
   const isRepeatedProduct = (newProduct) => {
-    return productsCart.findIndex((product) => product.id === newProduct.id) >= 0? 
+    return cartRenderProducts.findIndex((product) => product.id === newProduct.id) >= 0? 
            true: false;
   };
 
@@ -95,9 +84,9 @@ export default function Home() {
     setCount(count + 1);
     
     if (isRepeatedProduct(productData)) {
-      const productUnits = unitsPerProduct.map((units, index) => {
+      const productUnits = cartRenderUnits.map((units, index) => {
         
-        if (index === productsCart.findIndex((product) => product.id === productData.id) && units < maxUnits){
+        if (index === cartRenderProducts.findIndex((product) => product.id === productData.id) && units < maxUnits){
           return units + 1;
         } return units;
                
@@ -105,20 +94,21 @@ export default function Home() {
 
       setunitsPerProduct(productUnits);
       handleCartRenderUnits(productUnits);
-      setproductsCart([...productsCart]);
-      handleCartRenderProducts([...productsCart]);
-      console.log(productsCart,cartRenderUnits,cartTotalPrice);
+      setproductsCart([...cartRenderProducts]);
+      handleCartRenderProducts([...cartRenderProducts]);
+      console.log(cartRenderProducts,cartRenderUnits,cartTotalPrice);
     } else {
-      setunitsPerProduct([...unitsPerProduct, 1]);
-      handleCartRenderUnits([...unitsPerProduct, 1]);
-      setproductsCart([...productsCart, productData]);
-      handleCartRenderProducts([...productsCart, productData]);
+      setunitsPerProduct([...cartRenderUnits, 1]);
+      handleCartRenderUnits([...cartRenderUnits, 1]);
+      setproductsCart([...cartRenderProducts, productData]);
+      handleCartRenderProducts([...cartRenderProducts, productData]);
       calculateTotalPrice();
       calculateTotalUnits();
-      console.log(cartRenderProducts,unitsPerProduct,cartTotalPrice);
+      console.log(cartRenderProducts,cartRenderUnits,cartTotalPrice);
     }
     calculateTotalPrice();
     calculateTotalUnits();
+    console.log()
   };
 
   var [modalStatus, setModalStatus] = useState("close");

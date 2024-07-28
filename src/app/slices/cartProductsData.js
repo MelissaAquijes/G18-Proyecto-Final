@@ -1,12 +1,36 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+function getLocalStorageData (ind) {
+  const flag1 = localStorage.getItem("cartRenderProducts");
+  const flag2 = localStorage.getItem("cartRenderUnits");
+  const flag3 = localStorage.getItem("cartTotalPrice");
+  const flag4 = localStorage.getItem("cartTotalUnits");
+
+  const productsArray = flag1? [...JSON.parse(flag1)] : [];
+  const unitsArray = flag2? [...JSON.parse(flag2)] : [];
+  const totalPrice = flag3? JSON.parse(flag3) : 0;
+  const totalUnits = flag4? JSON.parse(flag4) : 0
+
+  switch (ind) {
+    case 1:
+      return productsArray; 
+    case 2:
+      return unitsArray;
+    case 3:
+      return totalPrice;
+    default: 
+      return totalUnits;
+  }
+
+}
+
 const cartProductsDataSlice = createSlice({
   name:"cartProductDataSlice",
   initialState:{
-    cartProductsArray:[],
-    cartUnitsArray:[],
-    cartTotalPrice:0,
-    cartTotalUnits:0,
+    cartProductsArray:getLocalStorageData(1),
+    cartUnitsArray:getLocalStorageData(2),
+    cartTotalPrice:getLocalStorageData(3),
+    cartTotalUnits:getLocalStorageData(4),
   },
 
   reducers:{

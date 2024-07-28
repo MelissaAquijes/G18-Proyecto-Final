@@ -15,13 +15,6 @@ export default function Header(props){
   const cartPayButtBorder = useSelector((state)=>state.cartPayButtonFormat.borderColor);
   const cartPayButtHover = useSelector((state)=>state.cartPayButtonFormat.hoverFormat);
 
-  //LocalStorage
-  function saveDataInLocalStorage(){
-    localStorage.setItem("cartRenderProducts",JSON.stringify(cartRenderProducts));
-    localStorage.setItem("cartRenderUnits",JSON.stringify(cartRenderUnits));
-    localStorage.setItem("cartTotalPrice",JSON.stringify(cartTotalPrice));
-    localStorage.setItem("cartTotalUnits",JSON.stringify(cartTotalUnits));
-  }
 
   // DATOS DE LOS PRODUCTOS: MODELO + PRECIO
   const cartRenderProducts = useSelector((state)=>state.cartProductsData.cartProductsArray);
@@ -45,6 +38,13 @@ export default function Header(props){
     dispatch(setCartTotalUnits(totalUnits));
   };
 
+  function saveDataInLocalStorage(){
+    localStorage.setItem("cartRenderProducts",JSON.stringify(cartRenderProducts));
+    localStorage.setItem("cartRenderUnits",JSON.stringify(cartRenderUnits));
+    localStorage.setItem("cartTotalPrice",JSON.stringify(cartTotalPrice));
+    localStorage.setItem("cartTotalUnits",JSON.stringify(cartTotalUnits));
+  }
+
   // const [active, setActive] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -56,17 +56,17 @@ export default function Header(props){
   
   // Eliminar productos del carrito
   const  removeProductFromCart = (index) => {
-    const updatedCart = props.productsCart.filter((_, i) => i !== index); //metodo filter primer parametro ignoramos
+    const updatedCart = cartRenderProducts.filter((_, i) => i !== index); //metodo filter primer parametro ignoramos
     props.setProductsCart(updatedCart);
     handleCartRenderProducts(updatedCart);
 
     // Primero actualiza la cuenta del carrito
-    const updatedCount = props.count - props.unitsPerProduct[index];
+    const updatedCount = cartTotalUnits - props.unitsPerProduct[index];
     props.setCount(updatedCount);
     handleCartTotalUnits(updatedCount);
 
     // Luego elimina el elemento
-    const updatedproductUnits = props.unitsPerProduct.filter((_,i)=> i !== 
+    const updatedproductUnits = cartRenderUnits.filter((_,i)=> i !== 
     index); // borra el elemento del array de unidades
     props.setunitsPerProduct(updatedproductUnits);
     handleCartRenderUnits(updatedproductUnits);
@@ -87,10 +87,10 @@ export default function Header(props){
   }
  
   const incrementProductUnits = (productUnits,indexProd) => {
-    const updatedUnits = props.unitsPerProduct.map((units, index) => {
+    const updatedUnits = cartRenderUnits.map((units, index) => {
       if (index === indexProd && productUnits < props.maxUnits){
-        props.setCount(props.count+1);
-        handleCartTotalUnits(props.count+1);
+        props.setCount(cartTotalUnits+1);
+        handleCartTotalUnits(cartTotalUnits+1);
         return units + 1;
       } return units; 
     });
@@ -100,10 +100,10 @@ export default function Header(props){
   }
 
   const decrementProductUnits = (productUnits,indexProd) => {
-    const updatedUnits = props.unitsPerProduct.map((units, index) => {
+    const updatedUnits = cartRenderUnits.map((units, index) => {
       if (index === indexProd && productUnits > props.minUnits){
-        props.setCount(props.count-1);
-        handleCartTotalUnits(props.count-1);
+        props.setCount(cartTotalUnits-1);
+        handleCartTotalUnits(cartTotalUnits-1);
         return units - 1;
       } return units; 
     });
@@ -113,19 +113,19 @@ export default function Header(props){
   }
 
   // Render Products
-  const productsToRenderInCart = props.productsCart.map((product, index) => {
+  const productsToRenderInCart = cartRenderProducts.map((product, index) => {
     
       return (
         <li key={product.id} className="flex flex-col h-[35%] mb-1">
           <div className="flex h-4/5">
             <div className="flex flex-col w-[15%] h-full justify-center gap-2 items-center">
-              <button onClick={()=>incrementProductUnits(props.unitsPerProduct[index],index)} className="w-3/5 h-[20%] flex justify-center items-center border rounded-xl bg-gray-200 hover:bg-peach">
+              <button onClick={()=>incrementProductUnits(cartRenderUnits[index],index)} className="w-3/5 h-[20%] flex justify-center items-center border rounded-xl bg-gray-200 hover:bg-peach">
                 <i className="fa-solid fa-angle-up"></i>
               </button>
 
-              <p className="w-3/5 bg-white border text-center rounded-md">{props.unitsPerProduct[index]}</p>
+              <p className="w-3/5 bg-white border text-center rounded-md">{cartRenderUnits[index]}</p>
 
-              <button onClick={()=>decrementProductUnits(props.unitsPerProduct[index],index)} className="w-3/5 h-[20%] flex justify-center items-center border rounded-xl bg-gray-200 hover:bg-peach">
+              <button onClick={()=>decrementProductUnits(cartRenderUnits[index],index)} className="w-3/5 h-[20%] flex justify-center items-center border rounded-xl bg-gray-200 hover:bg-peach">
                 <i className="fa-solid fa-angle-down"></i>
               </button>
             </div>
@@ -149,7 +149,7 @@ export default function Header(props){
             </div>  
           </div>
 
-          {maxLimitPerProductMessage(props.unitsPerProduct[index])}   
+          {maxLimitPerProductMessage(cartRenderUnits[index])}   
           
         </li> 
       )}
@@ -175,26 +175,12 @@ export default function Header(props){
     handleCartTotalUnits(cartRenderUnits.reduce((accumulator, nextProduct) => accumulator + nextProduct, 0));
   };
 
+  
   useEffect(() => {
     //usamos UseEffect para que automáticamente corra la funcion cuando algo se modifica en [productCart]
     calculateTotalPrice();
     calculateTotalUnits();
-    saveDataInLocalStorage();
-
-    // const flag1 = localStorage.getItem("cartRenderProducts");
-    // const flag2 = localStorage.getItem("cartRenderUnits");
-    // const flag3 = localStorage.getItem("cartTotalPrice");
-    // const flag4 = localStorage.getItem("cartTotalUnits");
-
-    // const arr1 = flag1? [...JSON.parse(flag1)] : [];
-    // const arr2 = flag2? [...JSON.parse(flag2)] : [];
-    // const num3 = flag3? JSON.parse(flag3) : 0;
-    // const num4 = flag4? JSON.parse(flag4) : 0
-
-    // handleCartRenderProducts(arr1);
-    // handleCartRenderUnits(arr2);
-    // handleCartTotalPrice(num3);
-    // handleCartTotalUnits(num4);
+    saveDataInLocalStorage()
   });
 
 
@@ -258,7 +244,7 @@ export default function Header(props){
             {/* LISTADO DE PRODUCTOS EN EL CARRITO DESPLEGADO */}
             <div className="flex justify-between h-[70%] p-5 border-4 border-black overflow-auto">
               <ul className="my-1 w-full divide-y-4 divide-gray-200">
-                {renderCartProducts(props.count)}
+                {renderCartProducts(cartTotalUnits)}
               </ul>
             </div>
 
