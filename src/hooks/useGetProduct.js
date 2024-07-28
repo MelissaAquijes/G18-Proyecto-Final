@@ -6,7 +6,7 @@ export default function useGetProduct() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const url = `https://66204cf23bf790e070af81c3.mockapi.io/products`;
+        const url = `http://127.0.0.1:8000/api/v1/productos/`;
         const response = await fetch(url);
 
         if (!response.ok) {
