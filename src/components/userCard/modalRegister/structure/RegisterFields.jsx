@@ -197,7 +197,7 @@ d
           <input type="checkbox" name="acceptTermsCheckbox" className="mx-1" />
           <span>Acepto las </span>
           <a
-            href="http://localhost:5173/terms_and_conditions"
+            href="https://g18-backend.onrender.comterms_and_conditions"
             target="_blank"
             className="underline hover:text-indigo-600"
           >
