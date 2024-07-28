@@ -77,7 +77,7 @@ d
 
     try {
       // Envía una solicitud POST al endpoint de registro usando fetch
-      const response = await fetch("http://127.0.0.1:8000/api/v1/register/", {
+      const response = await fetch("https://g18-backend.onrender.com/api/v1/register/", {
         method: "POST",
         // Especifica que tipo de datos voy a enviar mi servidor
         headers: {
