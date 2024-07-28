@@ -123,7 +123,7 @@ export default function LoginFields() {
           </div>
 
           <a
-            href="http://localhost:5173/forgot_my_password"
+            href="https://g18-backend.onrender.comforgot_my_password"
             target="_blank"
             className="hover:text-indigo-600 hover:underline mx-1"
           >
