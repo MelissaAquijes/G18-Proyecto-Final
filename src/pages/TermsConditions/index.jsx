@@ -49,7 +49,7 @@ export default function TermsConditions() {
           </div>
 
           <div className="flex justify-center w-full h-[30%]">
-            <a href="g18-proyecto-final.vercel.app">
+            <a href="https://g18-proyecto-final.vercel.app">
               <img className="h-full" src={logo} />
             </a>
           </div>
