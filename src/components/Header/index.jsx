@@ -50,7 +50,7 @@ export default function Header(props) {
   };
 
   const handleCartTotalPrice = (totalPrice) => {
-    dispatch(setCartTotalPrice(totalPrice);
+    dispatch(setCartTotalPrice(totalPrice));
   };
 
   const handleCartTotalUnits = (totalUnits) => {
