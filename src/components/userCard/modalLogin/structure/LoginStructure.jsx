@@ -35,10 +35,7 @@ export default function LoginStructure(props) {
               change2Register={props.change2Register}
             />
 
-            <LoginFields
-            //values={props.values}
-            // handleInputChange={props.handleInputChange}
-            />
+            <LoginFields />
           </div>
         </div>
       </div>

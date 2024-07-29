@@ -19,39 +19,6 @@ export default function RegisterFields() {
     );
   };
 
-  //Redux para el form
-  /*const dispatch = useDispatch();
-  const registerEmail = useSelector((state) => state.formInputs.emailInput);
-  const registerPassword = useSelector(
-    (state) => state.formInputs.passwordInput
-  );
-  const registerPassword2 = useSelector(
-    (state) => state.formInputs.password2Input
-  );
-  const registerName = useSelector((state) => state.formInputs.nameInput);
-  const registerLastname = useSelector(
-    (state) => state.formInputs.lastNameInput
-  );
-
-  const handleRegisterEmailData = (event) => {
-    dispatch(getEmailInput(event.target.value));
-  };
-
-  const handleRegisterPasswordData = (event) => {
-    dispatch(getPasswordInput(event.target.value));
-  };
-d
-    dispatch(getPassword2Input(event.target.value));
-  };
-
-  const handleRegisterNameData = (event) => {
-    dispatch(getNameInput(event.target.value));
-  };
-
-  const handleRegisterLastnameData = (event) => {
-    dispatch(getLastnameInput(event.target.value));
-  };*/
-
   const [formData, setFormData] = useState({
     //propiedades
     username: "",
@@ -109,7 +76,7 @@ d
           id="emailRegisterField"
           className="w-full h-1/5 flex border-4 rounded-xl"
         >
-          <i className="fa-solid fa-at w-[10%] h-[100%] flex justify-center items-center rounded-l-[8px] border-r-4"></i>
+          <i className="fa-solid fa-user w-[10%] h-full flex justify-center items-center rounded-l-[8px] border-r-4"></i>
           <input
             type="text"
             name="username"
@@ -197,7 +164,7 @@ d
           <input type="checkbox" name="acceptTermsCheckbox" className="mx-1" />
           <span>Acepto las </span>
           <a
-            href="https://g18-backend.onrender.comterms_and_conditions"
+            href="https://g18-proyecto-final.vercel.app/terms_and_conditions"
             target="_blank"
             className="underline hover:text-indigo-600"
           >

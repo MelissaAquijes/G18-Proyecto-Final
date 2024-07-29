@@ -6,4 +6,5 @@ export {modBorderSliceReducer} from "./slices/modBorderSlice";
 export {footButtSliceReducer} from "./slices/footButtSlice";
 export {cartPayButtSliceReducer} from "./slices/cartPayButtSlice";
 export {formInputSliceReducer} from "./slices/formInputSlice";
+export {cartProductsDataSliceReducer} from "./slices/cartProductsData";
 

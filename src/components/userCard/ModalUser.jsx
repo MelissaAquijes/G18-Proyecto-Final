@@ -22,19 +22,6 @@ export default function ModalUser(props) {
     return setModalType("login");
   };
 
-  // const [values,setValues] = useState({
-  //   email: "",
-  //   pswd: "",
-  // });
-
-  // const handleInputChange = (event) => {
-  //   const {name,value} = event.target;
-  //   setValues({
-  //     ...values,
-  //     [name]: value,
-  //   })
-  // }
-
   return (
     // {/* MODAL */}
     <div

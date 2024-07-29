@@ -16,22 +16,6 @@ export default function LoginFields() {
     );
   };
 
-  // Uso de reducers para el Form
-  /*const dispatch = useDispatch();
-  const loginEmail = useSelector((state) => state.formInputs.emailInput);
-  const loginPassword = useSelector((state) => state.formInputs.passwordInput);
-
-  /// Login Fields: Email input
-  // Función para capturar email input
-  const handleLoginEmailData = (event) => {
-    dispatch(getEmailInput(event.target.value));
-  };
-
-  // Función para capturar password input
-  const handleLoginPasswordData = (event) => {
-    dispatch(getPasswordInput(event.target.value));
-  };*/
-
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -123,7 +107,7 @@ export default function LoginFields() {
           </div>
 
           <a
-            href="https://g18-backend.onrender.comforgot_my_password"
+            href="https://g18-proyecto-final.vercel.app/forgot_my_password"
             target="_blank"
             className="hover:text-indigo-600 hover:underline mx-1"
           >

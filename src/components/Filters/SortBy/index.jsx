@@ -7,13 +7,13 @@ export default function SortBy({ products, handleSortingChange }) {
     let sorted;
 
     if (value === "lowest_to_highest") {
-      sorted = [...products].sort((a, b) => a.price - b.price);
+      sorted = [...products].sort((a, b) => a.precio - b.precio);
     } else if (value === "highest_to_lowest") {
-      sorted = [...products].sort((a, b) => b.price - a.price);
+      sorted = [...products].sort((a, b) => b.precio - a.precio);
     } else if (value === "name_a_to_z") {
-      sorted = [...products].sort((a, b) => a.title.localeCompare(b.title));
+      sorted = [...products].sort((a, b) => a.nombre.localeCompare(b.nombre));
     } else if (value === "name_z_to_a") {
-      sorted = [...products].sort((a, b) => b.title.localeCompare(a.title));
+      sorted = [...products].sort((a, b) => b.nombre.localeCompare(a.nombre));
     } else {
       sorted = products;
     }

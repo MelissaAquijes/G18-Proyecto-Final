@@ -15,5 +15,6 @@ export const globalStore = configureStore({
     footButtonColor: footButtSliceReducer,
     cartPayButtonFormat: cartPayButtSliceReducer,
     formInputs: formInputSliceReducer,
+    cartProductsData: cartProductsDataSliceReducer,
   },
 });

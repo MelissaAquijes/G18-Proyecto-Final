@@ -13,7 +13,7 @@ export default function Filters(props) {
 
   useEffect(() => {
     // Filtrar productos según la categoría seleccionada
-    const filtered = category === 'All' ? products : products.filter(product => product.category === category);
+    const filtered = category === 'All' ? products : products.filter(product => product.categoria.nombre === category);
     setFilteredProducts(filtered);
   }, [category, products]);
 
@@ -23,7 +23,7 @@ export default function Filters(props) {
   }, [filteredProducts]);
 
   // Obtener todas las categorías disponibles
-  const allCategories = ['All', ...Array.from(new Set(products.map(product => product.category)))];
+  const allCategories = ['All', ...Array.from(new Set(products.map(product => product.categoria.nombre)))];
 
   const filterCategory = (category) => {
     setCategory(category);
