@@ -6,6 +6,7 @@ import {
   footButtSliceReducer,
   cartPayButtSliceReducer,
   formInputSliceReducer,
+  cartProductsDataSliceReducer
 } from "./exports";
 
 export const globalStore = configureStore({
