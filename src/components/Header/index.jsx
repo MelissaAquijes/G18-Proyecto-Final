@@ -324,7 +324,7 @@ export default function Header(props) {
               {/* LISTADO DE PRODUCTOS EN EL CARRITO DESPLEGADO */}
               <div className="flex justify-between h-[70%] p-5 border-x-4 border-indigo-200 overflow-auto">
                 <ul className="my-1 w-full divide-y-4 divide-gray-200">
-                  {renderCartProducts(cartTotalUnits)}
+                  {renderCartProducts(cartTotalUnits}
                 </ul>
               </div>
 
@@ -334,7 +334,7 @@ export default function Header(props) {
                   {" "}
                   TOTAL:{" "}
                   <span className="flex justify-center items-center rounded-r-xl w-3/5 h-full text-center text-2xl text-black bg-white">
-                    S/.{cartTotalPrice}
+                    S/.{cartTotalPrice.ToString().concat("0")}
                   </span>
                 </div>
 
