@@ -8,7 +8,7 @@ function getLocalStorageData (ind) {
 
   const productsArray = flag1? [...JSON.parse(flag1)] : [];
   const unitsArray = flag2? [...JSON.parse(flag2)] : [];
-  const totalPrice = flag3? JSON.parse(flag3) : 0;
+  const totalPrice = flag3? JSON.parse(flag3) : 0.0;
   const totalUnits = flag4? JSON.parse(flag4) : 0
 
   switch (ind) {
@@ -51,7 +51,6 @@ const cartProductsDataSlice = createSlice({
     setCartTotalUnits: (state,action) => {
       state.cartTotalUnits = action.payload;
     }
-
 
 
   }
