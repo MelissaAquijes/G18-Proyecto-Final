@@ -334,7 +334,7 @@ export default function Header(props) {
                   {" "}
                   TOTAL:{" "}
                   <span className="flex justify-center items-center rounded-r-xl w-3/5 h-full text-center text-2xl text-black bg-white">
-                    S/.{cartTotalPrice.toString()}
+                    S/.{cartTotalPrice}
                   </span>
                 </div>
 
