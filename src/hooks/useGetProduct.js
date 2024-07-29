@@ -6,7 +6,7 @@ export default function useGetProduct() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const url = `https://66204cf23bf790e070af81c3.mockapi.io/products`;
+        const url = `https://g18-backend.onrender.com/api/v1/productos/`;
         const response = await fetch(url);
 
         if (!response.ok) {

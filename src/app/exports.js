@@ -1,6 +1,5 @@
 // Index file: Para exportar reducers
 
-
 // Reducers export
 export {swButtColSliceReducer} from "./slices/swButtColSlice";
 export {modBorderSliceReducer} from "./slices/modBorderSlice";

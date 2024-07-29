@@ -6,13 +6,14 @@ import Cards from "../Cards";
 
 export default function Filters(props) {
   const { products } = useGetProduct();
+  console.log(products)
   const [category, setCategory] = useState('All');
   const [filteredProducts, setFilteredProducts] = useState(products); // Estado para los productos filtrados
   const [sortedProducts, setSortedProducts] = useState(products); // Estado para los productos ordenados
 
   useEffect(() => {
     // Filtrar productos según la categoría seleccionada
-    const filtered = category === 'All' ? products : products.filter(product => product.category === category);
+    const filtered = category === 'All' ? products : products.filter(product => product.categoria.nombre === category);
     setFilteredProducts(filtered);
   }, [category, products]);
 
@@ -22,7 +23,7 @@ export default function Filters(props) {
   }, [filteredProducts]);
 
   // Obtener todas las categorías disponibles
-  const allCategories = ['All', ...Array.from(new Set(products.map(product => product.category)))];
+  const allCategories = ['All', ...Array.from(new Set(products.map(product => product.categoria.nombre)))];
 
   const filterCategory = (category) => {
     setCategory(category);
