@@ -44,7 +44,8 @@ const cartProductsDataSlice = createSlice({
     },
 
     setCartTotalPrice: (state,action) => {
-      state.cartTotalPrice = Math.round(action.payload);
+      const ref = action.payload;
+      state.cartTotalPrice = parseFloat(ref.toFixed(2));
     },
 
     setCartTotalUnits: (state,action) => {
